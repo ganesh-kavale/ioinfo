@@ -1,0 +1,20 @@
+// .center-container {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     min-height: calc(90vh - 50px); /* Adjust 50px based on footer height */
+//     margin-bottom: 10vh; /* Moves it 10% above the footer */
+//   }
+  
+// .animated-bg {
+//   background-color: wheat;
+  
+//     // background: url('https://media.licdn.com/dms/image/v2/D5612AQGJuLdjUgZL2w/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1707248423396?e=1747872000&v=beta&t=vE3qrFZVFDvbdwgqyuDe-c61oPefgnYDD55q75nJGtU') no-repeat center center/cover;
+//     width: 100%;
+//     min-height: 100vh;
+// }
+:host {
+    display: block;
+    background-color: rgb(232, 232, 232);
+    // padding: 10px;
+  }
