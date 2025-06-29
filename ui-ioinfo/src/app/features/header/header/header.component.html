@@ -1,61 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 50" width="400" height="50">
-        <title>MARTIAN Logo</title>
-        <g fill="#4B0082" font-family="Garamond, serif" font-size="34" font-weight="bold">
-          <text x="10" y="34" letter-spacing="2">MARTIAN</text>
-        </g>
-        <g class="letter_swoosh" transform="translate(-125,18)">
-          <path d="M399,0.7c-80,4.6-117,38.8-125.3,46.9l-1.7,1.6h14.8C326.8,9.1,384.3,2,399,0.7L399,0.7z" fill="#4B0082"/>
-        </g>
-      </svg>
-    </a>
+<header class="header">
+  <div class="container">
+    <!-- Top Section: Logo, Contact Info, and Hamburger -->
+    <div class="section">
+      <!-- Left: Logo & Brand -->
+      <div class="logo-contact-wrapper">
+        <div class="logo-section">
+          <img src="assets/images/ioinfo.svg" alt="Logo" class="logo" />
+          <span class="brand">SYSIO INFO</span>
+        </div>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <span class="contact-item">📞 +91-9067909181</span>
+          <span class="contact-item">✉️ ganeshkavale27&#64;gmail.com</span>
+        </div>
+      </div>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li *ngFor="let node of navigationNodes">
-          <a class="nav-link active" [href]="node.url">{{ node.name }}</a>
-        </li>
-
-        <li >
-
-          <div class="button-container">
-            <button class="btn">Login</button>
-            <button class="btn">Register</button>
-          </div>
-        </li>
-
-        <li class="nav-item dropdown"
-        (mouseenter)="showDropdown()"
-        (mouseleave)="normaliseDropdown()">
-    
-      <!-- <span class="material-symbols-outlined" id="navbarDropdownMenuLink" role="button"
-            aria-expanded="false">
-        manage_accounts
-      </span> -->
-    
-      <ul class="dropdown-menu" [class.show]="displayDropdown" aria-labelledby="navbarDropdownMenuLink">
-        <li><a class="dropdown-item" routerLink="/login">Login</a></li>
-        <li><a class="dropdown-item" routerLink="/app-dev">Profile</a></li>
-        <li><a class="dropdown-item" routerLink="/login">Logout</a></li>
-      </ul>
-
-      
-    </li>
-
-  
- 
-    
-
-
-    
-      </ul>
+      <!-- Right: Hamburger -->
+      <div class="hamburger" (click)="toggleMenu()">☰</div>
     </div>
   </div>
-</nav>
+
+  <!-- Navigation -->
+  <div class="categories">
+    <nav class="nav-links" [class.show]="isMenuOpen">
+      <ng-container *ngFor="let node of navigationNodes; let i = index">
+        <a class="nav-link active" [href]="node.url">{{ node.name }}</a>
+        <span *ngIf="i < navigationNodes.length - 1" class="separator">|</span>
+      </ng-container>
+    </nav>
+  </div>
+</header>

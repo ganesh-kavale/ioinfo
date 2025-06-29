@@ -58,5 +58,10 @@ export class HeaderComponent  implements OnInit {
     this.displayDropdown=true
   }
 
+    isMenuOpen = false;
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
  
 }

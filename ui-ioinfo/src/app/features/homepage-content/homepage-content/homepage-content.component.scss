@@ -11,7 +11,7 @@
     display: block;
 }
 
-.text{
+.text {
     position: absolute;
     top: 10%;
     left: 10%;
@@ -24,7 +24,8 @@
     border-radius: 5px;
 
 
-    @media (min-width: 769px) and (max-width: 1024px) { // Tablet (iPad)
+    @media (min-width: 769px) and (max-width: 1024px) {
+        // Tablet (iPad)
         position: absolute;
         top: 20%;
         left: 10%;
@@ -35,20 +36,21 @@
         font-size: 42px;
         font-weight: bold;
         border-radius: 5px;
-      }
-      @media (max-width: 768px) {
+    }
+
+    @media (max-width: 768px) {
         position: absolute;
-    top: 30%;
-    left: 10%;
-    transform: translateY(-50%);
-    color: wheat;
-    // background: rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    font-size: 42px;
-    font-weight: bold;
-    border-radius: 5px;
-      }  
-      
+        top: 30%;
+        left: 10%;
+        transform: translateY(-50%);
+        color: wheat;
+        // background: rgba(0, 0, 0, 0.5);
+        padding: 10px 20px;
+        font-size: 42px;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+
 }
 
 .container {
@@ -65,17 +67,20 @@
 }
 
 .container img {
-    width: 200px; /* Adjust image size */
+    width: 200px;
+    /* Adjust image size */
     height: auto;
-    border-radius: 10px; /* Optional: rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: shadow */
+    border-radius: 10px;
+    /* Optional: rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Optional: shadow */
 }
 
 .paragraph-content-1 {
     margin-top: 2%;
     font-size: 18px;
     // font-weight: bold;
-    
+
 }
 
 /* Responsive: Switch to column layout for small screens */
@@ -118,26 +123,31 @@
 }
 
 .image-container .image1 {
-    width: 200px; /* Adjust as needed */
+    width: 200px;
+    /* Adjust as needed */
     height: auto;
     display: block;
     border-radius: 10px;
 }
 
 .image1 img {
-    width: 200px; /* Adjust as needed */
+    width: 200px;
+    /* Adjust as needed */
     height: auto;
 
 }
 
 .image-container .image2 {
-    width: 200px; /* Adjust as needed */
+    width: 200px;
+    /* Adjust as needed */
     height: auto;
     display: block;
     border-radius: 10px;
 }
+
 .image2 img {
-    width: 200px; /* Adjust as needed */
+    width: 200px;
+    /* Adjust as needed */
     height: auto;
 
 }
@@ -146,14 +156,16 @@
 
 
 .image-container .image3 {
-    width: 200px; /* Adjust as needed */
+    width: 200px;
+    /* Adjust as needed */
     height: auto;
     display: block;
     border-radius: 10px;
 }
 
 .image3 img {
-    width: 200px; /* Adjust as needed */
+    width: 200px;
+    /* Adjust as needed */
     height: auto;
 
 }
@@ -168,14 +180,14 @@
 
 //Corousal
 
-.carousel-item img{
+.carousel-item img {
 
-    width:100%;
+    width: 100%;
     height: 40em;
 
 }
 
-.social-info{
+.social-info {
     position: absolute;
     bottom: 10%;
     right: 10%;
@@ -188,7 +200,8 @@
     border-radius: 5px;
 
 
-    @media (min-width: 769px) and (max-width: 1024px) { // Tablet (iPad)
+    @media (min-width: 769px) and (max-width: 1024px) {
+        // Tablet (iPad)
         position: absolute;
         top: 20%;
         left: 10%;
@@ -199,20 +212,21 @@
         font-size: 42px;
         font-weight: bold;
         border-radius: 5px;
-      }
-      @media (max-width: 768px) {
+    }
+
+    @media (max-width: 768px) {
         position: absolute;
-    top: 30%;
-    left: 10%;
-    transform: translateY(-50%);
-    color: wheat;
-    // background: rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    font-size: 42px;
-    font-weight: bold;
-    border-radius: 5px;
-      }  
-      
+        top: 30%;
+        left: 10%;
+        transform: translateY(-50%);
+        color: wheat;
+        // background: rgba(0, 0, 0, 0.5);
+        padding: 10px 20px;
+        font-size: 42px;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+
 }
 
 //for section 1 paragraph content
@@ -221,12 +235,14 @@
     display: flex;
     justify-content: space-between;
 }
+
 .list-container {
     width: 45%;
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
 }
+
 ul {
     list-style-type: disc;
     padding-left: 20px;
@@ -259,7 +275,7 @@ ul {
     width: 100%;
     height: 25rem;
     // border-radius: 8px;
-    
+
 }
 
 /* Text Section */
@@ -281,11 +297,11 @@ ul {
     border-radius: 5px;
 }
 
-.title{
+.title {
     font-family: 'Roboto', sans-serif;
     font-size: 2.5rem;
-    font-weight: bold;  
-    margin-top: 15px;  
+    font-weight: bold;
+    margin-top: 15px;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
@@ -300,15 +316,8 @@ ul {
     // text-align: center;
 }
 
-
-
-// .homepage-content-container{
- 
-//         justify-content: center;
-//         flex-wrap: wrap;
-//         gap: 20px;
-//         max-width: 1200px;
-//         margin: 0 auto;
-//         margin-bottom: 5%;
-    
-// }
+.lets-connect {
+    background-color: rgb(255 251 233);
+    height: 25em;
+    width: 100%;
+}
