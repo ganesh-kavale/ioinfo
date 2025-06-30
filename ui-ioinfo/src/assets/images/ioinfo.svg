@@ -1,0 +1,19 @@
+<svg width="128" height="128" viewBox="0 0 256 276" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define Morpankh gradient -->
+  <defs>
+    <linearGradient id="morpankhGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f8a70"/>   <!-- Peacock teal -->
+      <stop offset="30%" stop-color="#2e6f9e"/>  <!-- Rich blue -->
+      <stop offset="60%" stop-color="#7e5a9b"/>  <!-- Violet hint -->
+      <stop offset="100%" stop-color="#c6a82b"/> <!-- Golden highlight -->
+    </linearGradient>
+  </defs>
+
+  <!-- Star outline using Morpankh gradient -->
+  <polygon 
+    points="128,20 168,110 256,138 168,166 128,256 88,166 0,138 88,110"
+    fill="none" 
+    stroke="url(#morpankhGradient)" 
+    stroke-width="4"
+  />
+</svg>

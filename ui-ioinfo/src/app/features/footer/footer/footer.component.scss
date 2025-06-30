@@ -1,0 +1,61 @@
+/* app.component.css */
+
+/* Container to hold everything in flex layout */
+// :host {
+//     display: flex;
+//     flex-direction: column;
+//     // min-height: 100vh;
+//     margin: 0;
+//   }
+  
+  /* Content area styles */
+  .content {
+    flex: 1; /* This will take up the remaining space between the header/content and footer */
+    padding: 20px;
+  }
+  
+  /* Sticky footer styles */
+  .footer-container {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    padding: 20px;
+    position: fixed; /* Make the footer fixed at the bottom of the page */
+    bottom: 0; /* Attach it to the bottom of the screen */
+    width: 100%; /* Ensure it takes up the full width */
+    left: 0; /* Position the footer at the very left edge */
+    z-index: 1000; /* Ensure it's above other content */
+  }
+  
+  /* The footer menu and its contents */
+  .footer-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-menu li {
+    margin: 0 15px;
+  }
+  
+  .footer-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .footer-menu a:hover {
+    color: #007bff;
+  }
+  
+  /* Responsive layout for smaller screens */
+  @media (max-width: 768px) {
+    .footer-menu {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

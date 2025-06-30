@@ -1,0 +1,24 @@
+/*this scss maintains the child contentdisplay start positions look at margin and padding*/
+.container {
+
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 100px); /* Adjust for header/footer if needed */
+
+  @media (min-width: 769px) and (max-width: 1024px) { // Tablet (iPad)
+    // margin-top: 85px;
+    padding: 20px;
+    min-height: calc(100vh - 100px); /* Adjust for header/footer if needed */
+
+  }
+  @media (max-width: 768px) {
+    // margin-top: 5em;
+    // padding: 20px; (commented as per your request)
+    min-height: calc(100vh - 100px); /* Adjust for header/footer if needed */
+
+  }  
+
+
+}
+
+

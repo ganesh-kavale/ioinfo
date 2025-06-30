@@ -1,0 +1,24 @@
+
+<div class="blog-container">
+    <mat-card class="mat-card-container-blogs" appearance="outlined" *ngFor="let image of imageUrls; let i = index">
+   
+        <mat-card-content class="image-container">
+            <img [src]="image" class="photos" [alt]="image">
+        </mat-card-content>
+        <mat-card-content>
+            {{longText}}                            
+        </mat-card-content>        
+        <mat-card-header>
+            <mat-card-title>Like Share</mat-card-title>
+            <div class="icon-container">
+                <mat-icon class="icon" (click)="onLike(i)">thumb_up</mat-icon>
+                <mat-icon class="icon" (click)="onShare(i)">share</mat-icon>
+                <mat-icon class="icon" (click)="onShare(i)">linkedin</mat-icon>
+                <mat-icon class="icon" (click)="onShare(i)">camera</mat-icon>
+                <mat-icon class="icon" (click)="onShare(i)">facebook</mat-icon>
+                <mat-icon class="icon" (click)="onShare(i)">whatsapp</mat-icon>
+            </div>
+        </mat-card-header>
+    </mat-card>
+</div>
+

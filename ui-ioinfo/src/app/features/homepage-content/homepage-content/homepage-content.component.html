@@ -1,0 +1,80 @@
+<div class="homepage-content-container">
+ <!-- <div class="home-container">
+    <img src="../../../assets/images/homepage-image.jpg" alt="Homepage">
+</div> -->
+<div class="lets-connect">
+  This is a yellow background div.
+</div>
+
+
+
+<div class="homepage-profile-container">
+    <div class="row">
+        <div class="col">   
+            <div>   
+                <a href="#" aria-label="Play video">
+                    <!-- <img class="profile-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQayhvZsKTn2toeX4ORCt4_df2SsHOLqCDoFw&s" alt="SAP S/4HANA Cloud Public Edition 2408"> -->
+                    <!-- <img class="profile-img" src="../../../assets/images/Developer-Photo.jpeg" alt="SAP S/4HANA Cloud Public Edition 2408"> -->
+                    <img class="profile-img" src="../../../assets/images/Developer-Photo.jpg" alt="Homepage">
+
+                </a> 
+            </div>
+        </div>
+        <div class="col text-section">
+            <h1 class="title">Ganesh Kavale</h1>
+            <!-- <p> how the latest version of our cloud ERP solution can help your business run more efficiently and effectively.</p> -->
+             <!-- <h2>Software Developer</h2> -->
+             <div class="developer-text">DEVELOPER</div> <br>
+
+            <!-- <p><a href="#" class="link">Read the news article</a></p> -->
+            <p>I am a Developer Professional with expertise in Core java, CCV2, Sap Hybris Framework, Spring MVC, SpringBoot, Node js, Spartacus, Angular js, EJS, TypeScript.</p>
+            <p>The current site has been developed in the SpringBoot, and Angular js technology.</p>
+            <!-- <p><a href="#" class="link">Watch the video</a></p> -->
+            <a href="#" class="button-bottom">Discover more recent and planned innovations</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="image-container">
+    <div class="image1">
+        <img src="../../../assets/images/Developer-Profile.jpg" alt="photo" />
+        <div class="name">Image 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, aliquid?</div>
+    </div>
+
+    <div class="image2">
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240618140923/asus.jpg" alt="photo" />
+        <div class="name">Image 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, aliquid?</div>
+    </div>
+
+    <div class="image3">
+        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240618140635/microsoft.jpeg" alt="photo" />
+        <div class="name">Image 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, aliquid?</div>
+    </div>
+</div>
+
+<div id="testimonial_slide" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-inner">
+      <div *ngFor="let image of imageUrls; let i = index" class="carousel-item" [ngClass]="{'active': i === 0}">
+        <img [src]="image" class="d-block w-100" [alt]="image">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#testimonial_slide" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#testimonial_slide" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>   
+  </div>
+  
+
+</div>

@@ -1,0 +1,105 @@
+<div class="container">
+  <div class="sidebar-container">
+    <section class="author-info">
+        <a href="/">
+            <img src="../../../assets/images/Developer-Photo11.jpg" alt="Ganesh Kavale - Developer">
+        </a>
+        <div class="info-text">
+            <div class="author-name">Ganesh Kavale</div>
+            <div class="author-title"><span>Developer,</span> <a href="https://www.cybage.com" target="_blank">   Sapours Technologies</a></div>
+        </div>
+    </section>
+    <section class="search-section">
+        <form action="/" method="get">
+            <div class="search-wrapper">
+                <input type="text" name="s" placeholder="Search Blogs">
+                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+    </section>
+    <section class="category-menu">
+        <h4>CATEGORIES</h4>
+        <ul class="category-list">
+            <li><a href="/category/obstacles">Obstacles</a></li>
+            <li><a href="/category/all">All</a></li>
+            <li><a href="/category/purpose">Purpose</a></li>
+            <li><a href="/category/skills">Skills</a></li>
+        </ul>
+    </section>
+    <section class="tag-section">
+        <h4>TAG CLOUD</h4>
+        <div class="tag-container">
+            <a href="/tag/organization/">organization</a>
+            <a href="/tag/managers/">managers</a>
+            <a href="/tag/friends/">friends</a>
+        </div>
+    </section>
+    <section class="connect-section">
+        <h4>CONNECT WITH CYBAGE</h4>
+        <a href="https://www.cybage.com" target="_blank">www.cybage.com</a>
+    </section>
+</div>
+<div class="main-body">
+    <header>
+      <nav class="navbar">
+        <div class="navbar-header">
+          <a routerLink="/the-science-of-success" class="navbar-brand">
+            <span>Software Developer</span>
+            <span class="txtcolor">Ganesh Kavale    </span>
+          </a>
+        </div>
+        <ul class="nav-list">
+          <li class="nav-item active">
+            <a [href]="['/']">Martian</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/the-science-of-success">About</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+   
+  
+
+
+
+
+
+<!-- <div class="div-container"> -->
+        
+    <div class="content">
+        <div class="mat-card-wrapper">
+            <mat-card class="mat-card-container-blogs" appearance="outlined" *ngFor="let image of imageUrls; let i = index">
+                <mat-card-content class="image-container">
+                    <img [src]="image" class="photos" [alt]="image">
+                </mat-card-content>
+                <mat-card-content>
+                    {{longText}}                            
+                </mat-card-content>        
+                <mat-card-header>
+                    <mat-card-title>Like Share</mat-card-title>
+                    <div class="icon-container">
+                        <mat-icon class="icon" (click)="onLike(i)">thumb_up</mat-icon>
+                        <mat-icon class="icon" (click)="onShare(i)">share</mat-icon>
+                        <mat-icon class="icon" (click)="onShare(i)">linkedin</mat-icon>
+                        <mat-icon class="icon" (click)="onShare(i)">camera</mat-icon>
+                        <mat-icon class="icon" (click)="onShare(i)">facebook</mat-icon>
+                        <mat-icon class="icon" (click)="onShare(i)">whatsapp</mat-icon>
+                    </div>
+                </mat-card-header>
+            </mat-card>
+        </div>
+    </div>
+    
+<!-- </div> -->
+
+
+  </div>
+  
+
+    
+       
+   
+    
+</div>

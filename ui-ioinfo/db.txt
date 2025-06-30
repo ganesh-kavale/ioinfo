@@ -1,0 +1,84 @@
+
+use microservices;
+
+CREATE TABLE NavigationNodes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+ALTER TABLE NavigationNodes  
+ADD COLUMN url VARCHAR(255) NOT NULL;  
+
+TRUNCATE TABLE NavigationNodes;
+
+INSERT INTO NavigationNodes (name, url) VALUES
+('Home', '/home'),
+('Resources', '/resources'),
+('Projects', '/projects'),
+('Blogs', '/blogs'),
+('Gallery', '/gallery'),
+('Skills', '/skills'),
+('About Me', '/about-me');
+
+
+DROP TABLE admininfo;
+
+
+CREATE TABLE admininfo (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    profilesummary LONGTEXT,
+    education TEXT  NULL,  -- Can store ~64 KB of text 16k chars
+	university MEDIUMTEXT NULL,
+    achievements MEDIUMTEXT,  -- Can store ~16 MB of text 4mn chars
+    certifications TEXT,       -- Can store ~64 KB of text
+    experience LONGTEXT,     -- 1bn chars
+    passingyear DATE NULL   -- Stores as YYYY-MM-DD but can be formatted as DDMMYYYY
+
+);
+
+
+
+
+INSERT INTO admininfo (
+    name,profilesummary, education,university, achievements, certifications, experience
+) VALUES 
+('Ganesh Kavale','Passionate developer with two+ years of experience, proven track record in designing, developing, and implementing 
+scalable e-commerce solutions. Skilled in integrating third-party systems, optimizing performance, and ensuring high 
+availability. Strong problem-solving abilities coupled with excellent communication skills to collaborate effectively with 
+cross-functionalteams.Seeking to leverage my knowledge of coding and Web developmentto provide quality software 
+solutions for a progressive organization.',
+'Master of Technology (Mechanical Engineering-Marine), Bachelor of Engineering (Mechanical Engineering)',
+'Defence Institute of Advanced Technology Deemed University DRDO Pune, Pune University (SPPU)',
+'Received Hall of Fame award, Received Pawar Public Charitable Trust Pune Scholarship for securing Rank-1, Qualified GATE 2020,Qualified GATE 2021, Received MTech scholarship from july 2020 to july 2022 year from Defence Institute of advanced Technologies',
+'Understanding of Cloud Fundamentals | Transact SQL(T-SQL),
+Oracle Cloud Infrastructure 2023 AI Certified Foundations Associate, 
+Spring Microservices| Spring Data JPA with Boot| Data structures',
+'Experience to add')
+
+
+
+CREATE TABLE homepagecorousal (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL		
+);
+
+TRUNCATE TABLE homepagecorousal;
+
+
+INSERT INTO homepagecorousal (name) VALUES 
+('image1.JPG'),
+('image2.JPG'),
+('image3.JPG'),
+('image4.JPG'),
+('image5.JPG');
+('image6.JPG'),
+('image7.JPG'),
+('image8.JPG'),
+('image9.JPG'),
+('image10.JPG');
+
+
+
+
+
