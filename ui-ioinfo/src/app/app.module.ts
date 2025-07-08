@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContainersModule } from './features/containers.module';
 import { CommonModule } from '@angular/common';
 import { MemoirNoteModule } from './memoir-note/memoir-note.module';
+import { HomepageContentModule } from './features/homepage-content/homepage-content.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MemoirNoteModule } from './memoir-note/memoir-note.module';
     FormsModule,
     ReactiveFormsModule ,
     CommonModule,
-    MemoirNoteModule
+    MemoirNoteModule,
+    HomepageContentModule
   ],
   providers: [
     provideClientHydration(),

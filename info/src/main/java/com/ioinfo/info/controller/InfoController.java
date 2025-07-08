@@ -1,15 +1,19 @@
 package com.ioinfo.info.controller;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import com.ioinfo.info.entity.User;
+import javax.naming.AuthenticationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,18 +24,23 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ioinfo.info.configuration.JwtUtil;
 import com.ioinfo.info.entity.AboutMe;
+import com.ioinfo.info.entity.AuthResponse;
 import com.ioinfo.info.entity.Employee;
 import com.ioinfo.info.entity.HomepageCorousal;
+import com.ioinfo.info.entity.HomepageImageRow;
 import com.ioinfo.info.entity.NavigationNodes;
+import com.ioinfo.info.entity.User;
 import com.ioinfo.info.repository.InfoRepository;
+import com.ioinfo.info.repository.LoginRepository;
 import com.ioinfo.info.response.AddressResponse;
 import com.ioinfo.info.response.EmployeeResponse;
 import com.ioinfo.info.service.DataService;
 import com.ioinfo.info.service.EmailService;
 import com.ioinfo.info.service.InfoService;
 
-@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:4700", allowedHeaders = "*")
 @RestController
 public class InfoController {
 
@@ -63,7 +72,6 @@ public class InfoController {
 	@Autowired
 	DataService dataService;
 
-	
 	@GetMapping("employeeDetailsById/{id}")
 	public ResponseEntity<EmployeeResponse> getEmployeedetailsById(@PathVariable("id") int id) {
 
@@ -230,8 +238,53 @@ public class InfoController {
 		return ResponseEntity.ok(response);
 	}
 
-///Data 
-///
-///
+	@GetMapping("/homepage-image-row")
+	public ResponseEntity<List<HomepageImageRow>> getHomepageImageRow() {
+
+		List<HomepageImageRow> response = dataService.getHomepageImageRow();
+
+		if (response.isEmpty()) {
+			return ResponseEntity.noContent().build();
+		}
+
+		return ResponseEntity.ok(response);
+	}
+
+	@Autowired
+	private LoginRepository userRepository;
+
+	@Autowired
+	private JwtUtil jwtUtil;
+//
+//	@PostMapping("/auth/login")
+//	public ResponseEntity<?> login(@RequestBody User user) {
+//
+//		System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqqq" + user);
+//		Optional<User> dbUser = userRepository.findByUsername(user.getUsername());
+//
+//		if (dbUser.isPresent() && dbUser.get().getPassword().equals(user.getPassword())) {
+//			String token = jwtUtil.generateToken(user.getUsername());
+//			return ResponseEntity.ok(Collections.singletonMap("token", token));
+//		}
+//		return ResponseEntity.ok(Collections.singletonMap("token", "customm"));
+//	}
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
+
+	@PostMapping("/auth/login")
+	public ResponseEntity<?> login(@RequestBody User authRequest) throws AuthenticationException {
+
+		System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkk" + authRequest);
+		authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+
+		System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww" + authRequest);
+
+		String token = jwtUtil.generateToken(authRequest.getUsername());
+
+		System.out.println("tokennnnnnnnnnnnnnnnnnnnn" + token);
+		return ResponseEntity.ok(new AuthResponse(token));
+	}
 
 }

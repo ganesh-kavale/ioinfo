@@ -1,61 +1,80 @@
-/* app.component.css */
+/* wrapper to hold both footers */
+.footer-wrapper {
+  width: 100%;
+}
 
-/* Container to hold everything in flex layout */
-// :host {
-//     display: flex;
-//     flex-direction: column;
-//     // min-height: 100vh;
-//     margin: 0;
-//   }
-  
-  /* Content area styles */
-  .content {
-    flex: 1; /* This will take up the remaining space between the header/content and footer */
-    padding: 20px;
+/* Base footer container style */
+.footer-container {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Primary Footer: menu + social row */
+.primary-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+}
+
+/* flex row inside primary footer */
+.footer-section {
+  display: flex;
+  justify-content: space-between; /* site links left, social right */
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;   /* optional: constrain width */
+  margin: 0 auto;      /* center section */
+  text-align: left;    /* left-align links */
+}
+
+/* both menus share common flex styles */
+.footer-menu,
+.social-menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
+
+.footer-menu li,
+.social-menu li {
+  margin: 0;
+}
+
+.footer-menu a,
+.social-menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-menu a:hover,
+.social-menu a:hover {
+  color: #007bff;
+}
+
+/* Secondary Footer: copyright */
+.secondary-footer {
+  background-color: #e9ecef;
+  border-top: 1px solid #ccc;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Responsive: stack both menus under each other */
+@media (max-width: 768px) {
+  .footer-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
   
-  /* Sticky footer styles */
-  .footer-container {
-    background-color: #f8f9fa;
-    border-top: 1px solid #dee2e6;
-    padding: 20px;
-    position: fixed; /* Make the footer fixed at the bottom of the page */
-    bottom: 0; /* Attach it to the bottom of the screen */
-    width: 100%; /* Ensure it takes up the full width */
-    left: 0; /* Position the footer at the very left edge */
-    z-index: 1000; /* Ensure it's above other content */
+  .footer-menu,
+  .social-menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
-  
-  /* The footer menu and its contents */
-  .footer-menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .footer-menu li {
-    margin: 0 15px;
-  }
-  
-  .footer-menu a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-  
-  .footer-menu a:hover {
-    color: #007bff;
-  }
-  
-  /* Responsive layout for smaller screens */
-  @media (max-width: 768px) {
-    .footer-menu {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-  
+}
