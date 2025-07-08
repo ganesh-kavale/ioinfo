@@ -20,4 +20,18 @@ public class InfoAppConfiguration {
 		return new RestTemplate();
 	}
 	
+//	@Bean
+//	public WebMvcConfigurer corsConfigurer() {
+//	    return new WebMvcConfigurer() {
+//	        @Override
+//	        public void addCorsMappings(CorsRegistry registry) {
+//	            registry.addMapping("/employee-app/api/**")
+//	                    .allowedOrigins("http://localhost:4700")
+//	                    .allowedMethods("GET", "PUT", "DELETE")
+//	                    .allowedHeaders("*");
+//	        }
+//	    };
+//	}
+//	
+	
 }

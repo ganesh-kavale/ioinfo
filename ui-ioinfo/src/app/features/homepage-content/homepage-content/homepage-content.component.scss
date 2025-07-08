@@ -36,6 +36,8 @@
         font-size: 42px;
         font-weight: bold;
         border-radius: 5px;
+
+
     }
 
     @media (max-width: 768px) {
@@ -49,6 +51,7 @@
         font-size: 42px;
         font-weight: bold;
         border-radius: 5px;
+
     }
 
 }
@@ -316,8 +319,220 @@ ul {
     // text-align: center;
 }
 
-.lets-connect {
-    background-color: rgb(255 251 233);
-    height: 25em;
+
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+.tech-stack-section {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+.tech-stack-section h2 {
+    font-weight: 600;
+}
+
+.list-group-item {
+    font-size: 1.1rem;
+}
+
+// Homepage form
+
+// contact us form
+.connect-form {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+#contactUsForm {
+    border-collapse: separate;
+    border-spacing: 12px;
     width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#contactUsForm h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#contactUsForm label {
+    font-weight: bold;
+    width: 180px;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+    padding-top: 10px;
+}
+
+#contactUsForm input,
+#contactUsForm textarea {
+    width: 100%;
+    max-width: 360px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+#contactUsForm textarea {
+    resize: vertical;
+}
+
+#contactUsForm button {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#contactUsForm button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#contactUsForm button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+#form-title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    color: #003366;
+    /* Dark blue, professional tone */
+    text-align: center;
+    margin: 20px 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+// Image Row
+.image-carousel-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 5rem;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.scroll-wrapper {
+    width: 900px;
+    /* 3 cards x 300px including gaps */
+    overflow: hidden;
+    /* hide scroll */
+}
+
+.image-cards-container {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.4s ease-in-out;
+}
+
+.image-card {
+    width: 280px;
+    flex-shrink: 0;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-card:hover {
+    transform: translateY(-5px);
+}
+
+.image-preview img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.project-description {
+    font-size: 14px;
+    color: #555;
+}
+
+.project-techstack {
+    font-size: 13px;
+    color: #888;
+}
+
+.more-link {
+    text-align: left;
+}
+
+.more-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.more-link a:hover {
+    text-decoration: underline;
+}
+
+.carousel-control {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 2;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.carousel-control-icon {
+    color: #000;
+    font-size: 24px;
+    user-select: none;
 }

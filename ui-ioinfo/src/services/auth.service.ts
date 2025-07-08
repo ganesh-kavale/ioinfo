@@ -19,10 +19,15 @@ export class AuthService {
 
 
   login(username: string, password: string): Observable<any> {
-    const body = { username, password }; // Ensure matching request body
+  
+    const body = {       "username": username, "password":password }; // Ensure matching request body
 
-    this.baseUrl = this.authBaseUrl + "/login-app/api";
+    this.baseUrl = `${environment.rootUrl}` + "/employee-app/api";
     const loginConfirmUrl = `${this.baseUrl}/auth/login`;
+
+    console.log(loginConfirmUrl);
+    console.log(body);
+    
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return this.http.post<any>(loginConfirmUrl, body, { headers }).pipe(

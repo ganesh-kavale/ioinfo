@@ -71,7 +71,7 @@ INSERT INTO homepagecorousal (name) VALUES
 ('image2.JPG'),
 ('image3.JPG'),
 ('image4.JPG'),
-('image5.JPG');
+('image5.JPG'),
 ('image6.JPG'),
 ('image7.JPG'),
 ('image8.JPG'),
@@ -79,6 +79,36 @@ INSERT INTO homepagecorousal (name) VALUES
 ('image10.JPG');
 
 
+SELECT * FROM ioinfo.homepagecorousal;
+
+INSERT INTO ioinfo.homepagecorousal (name) VALUES ('../../../assets/homepage-corousal/digital.jpg');
+INSERT INTO ioinfo.homepagecorousal (name) VALUES ('../../../assets/homepage-corousal/Java.PNG');
+INSERT INTO ioinfo.homepagecorousal (name) VALUES ('../../../assets/homepage-corousal/Microservices1.jpg');
 
 
 
+
+use ioinfo;
+
+CREATE TABLE homepageimagerowcontainer (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    imagepath VARCHAR(255),
+    projectname VARCHAR(100),
+    techstack TEXT,
+    description TEXT
+    
+);
+
+select * from homepageimagerowcontainer;
+
+INSERT INTO homepageimagerowcontainer (imagepath, projectname, techstack, description)
+VALUES 
+  ('../../../assets/image-row/image-row1.jpg', 'Development, and Implementation of multiple B2B, and B2C sites Projects', 'SAP COMMERCE CLOUD, Java Spring MVC based - SAP Hybris Framework, AngularJS based - SAP Spartacus framework', 'B2B & B2C ECOMMERCE'),
+  ('../../../assets/image-row/image-row2.jpg', 'Email Notifications As Per Schedule', 'Java, SpringBoot, MySQL', 'Email Notifications'),
+  ('../../../assets/image-row/image-row3.jpg', 'Product - Project Management Tool','nodeJS, AngularJs, MSSQL', 'Work Flow Tracker');
+  
+CREATE TABLE users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);

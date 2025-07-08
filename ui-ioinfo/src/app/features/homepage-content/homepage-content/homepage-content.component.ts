@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { HomepageCorousalService } from '../../../../services/homepage-corousal.service';
 import { log } from 'console';
 import { EmailService } from '../../../../services/email.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { IoinfoImagesRetriveService } from '../../../../services/ioinfo-images-retrive.service';
 
 @Component({
   selector: 'app-homepage-content',
@@ -10,64 +12,93 @@ import { EmailService } from '../../../../services/email.service';
 })
 export class HomepageContentComponent implements OnInit {
 
-  basePath:any="../../../assets/images/";
-  images:any[]=[];
-  constructor(private homepageCorousal:HomepageCorousalService,private emailService:EmailService){
+  basePath: any = "../../../assets/images/";
+  images: any[] = [];
+  imageUrls: any;
+  contactForm: any;
+  contactForm1: any;
+  imageRows:any[]=[];
+  letter:any;
+  constructor(private homepageCorousal: HomepageCorousalService, private emailService: EmailService, private ioinfoImagesRetriveService: IoinfoImagesRetriveService) {
 
   }
-  // imageUrls:any;
+
+
   ngOnInit(): void {
+this.letter='WORK';
+    console.log(this.imageUrls);
+
+    this.contactForm = new FormGroup({
+      emailId: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(50),
+        Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$') // Standard email pattern
+      ]),
+      mobileNo: new FormControl('', [
+        Validators.pattern('^[6-9][0-9]{9}$') // Indian 10-digit mobile numbers starting with 6-9
+      ]),
+      subject: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255)
+      ]),
+      body: new FormControl('', [
+        Validators.required
+      ])
+    });
+
 
     console.log(this.imageUrls);
-    
-    // throw new Error('Method not implemented.');
 
-    // this.homepageCorousal.getHomepageCorousal().subscribe(res=>{
 
-    //   console.log(res);
-      
-    //   this.imageUrls=res.map((data: any) => this.basePath + data.name );
 
-    //   console.log(  this.imageUrls);
-      
-    // })
+    this.homepageCorousal.getHomepageCorousal().subscribe(res => {
+      console.log(res);
+      this.imageUrls = res.map((data: any) => this.basePath + data.name);
 
-    this.emailService.sendSubscriptionEmail().subscribe((res:any)=>{
+      console.log(this.imageUrls);
 
-      console.log("ttttttttttttttttttttttttt" + res);
-      
-
-      
     })
+    this.emailService.sendSubscriptionEmail().subscribe((res: any) => {
+      console.log("ttttttttttttttttttttttttt" + res);
+    })
+
+    this.ioinfoImagesRetriveService.getHomepageImageRow().subscribe((res: any) => {
+      this.imageRows=res;
+      console.log(this.imageRows);      
+    })
+
+    
+  }
+  onSubmit(contactForm: any) {
+    console.log(contactForm);
 
   }
 
-  imageUrls = [
-    '../../../assets/images/image1.jpg',
-    '../../../assets/images/image2.jpg',
+ @ViewChild('scrollContainer', { static: false }) scrollContainer!: ElementRef;
+  currentIndex = 0;
 
-    '../../../assets/images/image3.jpg',
+  scrollLeft() {
+    const totalCards =  this.scrollContainer.nativeElement.children[0].children.length;
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.updateTransform();
+    }
+  }
 
-    '../../../assets/images/image4.jpg',
+  scrollRight() {
+    const visibleCards = 3;
+    const totalCards =  this.scrollContainer.nativeElement.children[0].children.length;
+    if (this.currentIndex < totalCards - visibleCards) {
+      this.currentIndex++;
+      this.updateTransform();
+    }
+  }
 
-    '../../../assets/images/image5.jpg',
-
-  ];
-
-  // images = [
-  //   { src: "https://tms-outsource.com/blog/wp-content/uploads/2023/05/bootstrap-alternatives.jpg", alt: "Bootstrap Alternative" },
-  //   { src: "https://www.tutorialrepublic.com/lib/images/bootstrap-5.0-illustration.png", alt: "Bootstrap 5 Illustration" },
-  //   { src: "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230310132605/Bootstrap-Tutorial.jpg", alt: "Bootstrap Tutorial" }
-  // ];
-
-  // slideConfig = {
-  //   slidesToShow: 1,
-  //   slidesToScroll: 1,
-  //   dots: true,
-  //   arrows: true,
-  //   autoplay: true,
-  //   autoplaySpeed: 2000,
-  //   infinite: true
-  // };
+  updateTransform() {
+    const container = this.scrollContainer.nativeElement.querySelector('.image-cards-container');
+    const cardWidth = 280 + 32; // card width + gap
+    const offset = this.currentIndex * cardWidth;
+    container.style.transform = `translateX(-${offset}px)`;
+  }
 
 }
