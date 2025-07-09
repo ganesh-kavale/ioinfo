@@ -1,8 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { catchError, map, Observable, tap, throwError } from 'rxjs';
 import { SharedService } from './shared.service';
 import { environment } from '../environments/environment';
+import { isPlatformBrowser } from '@angular/common';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +17,10 @@ export class AuthService {
 
   testbaseUrl = "http://localhost:8096/auth-service-app-info/api";
   // /auth-service/api
-  constructor(private http: HttpClient, private sharedService: SharedService) { }
+  constructor(private http: HttpClient, private sharedService: SharedService,   @Inject(PLATFORM_ID) private platformId: Object) { }
 
 
-  login(username: string, password: string): Observable<any> {
+  login(username: string, password: string): Observable<any> {  
   
     const body = {       "username": username, "password":password }; // Ensure matching request body
 
@@ -73,11 +75,7 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
-  logout() {
-    localStorage.removeItem('token');
-  }
-
-  
+ 
 
 postAPITestUsingEmployeeService(): Observable<any> {
   this.baseUrl = `${environment.rootUrl}` + "/employee-app/api";
@@ -125,6 +123,37 @@ tepostAPITestUsingLoginServicestAPI(): Observable<any> {
     })
   );
 }
+
+
+
+  isTokenExpired(): boolean {
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('token');
+      if (!token) return true;
+
+      try {
+        const decoded: any = jwtDecode(token);
+        const currentTime = Date.now() / 1000;
+        return decoded.exp < currentTime;
+      } catch {
+        return true;
+      }
+    }
+    return true;
+  }
+
+clearTokenIfExpired(): void {
+  if (isPlatformBrowser(this.platformId)) {
+    if (this.isTokenExpired()) {
+      localStorage.removeItem('token');
+    }
+  }
+}
+
+
+  getToken(): string | null {
+    return isPlatformBrowser(this.platformId) ? localStorage.getItem('token') : null;
+  }
 
 
 }

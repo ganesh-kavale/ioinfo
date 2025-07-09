@@ -3,7 +3,7 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { withFetch } from '@angular/common/http'; // Import withFetch
 import { MaterialsModule } from './materials/materials.module';
@@ -14,6 +14,7 @@ import { ContainersModule } from './features/containers.module';
 import { CommonModule } from '@angular/common';
 import { MemoirNoteModule } from './memoir-note/memoir-note.module';
 import { HomepageContentModule } from './features/homepage-content/homepage-content.module';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -34,11 +35,14 @@ import { HomepageContentModule } from './features/homepage-content/homepage-cont
     MemoirNoteModule,
     HomepageContentModule
   ],
-  providers: [
-    provideClientHydration(),
-    provideAnimationsAsync(),
-    provideHttpClient(withFetch()), // Enable fetch for HttpClient
-  ],
+providers: [
+  provideClientHydration(),
+  provideAnimationsAsync(),
+  provideHttpClient(withFetch()), // Enable fetch for HttpClient
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+],
+
+  
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // This should be here, not in imports
 })

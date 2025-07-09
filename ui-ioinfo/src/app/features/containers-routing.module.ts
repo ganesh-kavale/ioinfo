@@ -6,6 +6,7 @@ import { CommonsblogComponent } from './commonsblog/commonsblog/commonsblog.comp
 import { HomepageContentComponent } from './homepage-content/homepage-content/homepage-content.component';
 import { GalleryComponent } from './gallery/gallery/gallery.component';
 import { MemoirNoteComponent } from '../memoir-note/memoir-note/memoir-note.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
   // {
@@ -128,7 +129,8 @@ const routes: Routes = [
         // },
         {
           path: 'blogs',
-          component: CommonsblogComponent
+          component: CommonsblogComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'gallery',
