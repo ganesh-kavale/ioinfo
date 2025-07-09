@@ -1,0 +1,72 @@
+.registration-card {
+  max-width: 540px;
+  margin: 40px auto;
+  padding: 32px 24px;
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+
+  mat-card-title {
+    text-align: center;
+    font-size: 27px;
+    margin-top: 10px;
+    font-weight: 600;
+    color: #686868;
+    margin-bottom: 30px;
+  }
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 20px;
+
+    input {
+      font-size: 16px;
+    }
+
+    mat-label {
+      font-weight: 500;
+    }
+
+    mat-error {
+      font-size: 13px;
+    }
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+
+  .login-section {
+text-align: center;
+    color: #616161;
+    font-size: 24px;
+    margin-bottom: 10px;
+
+   .login-link {
+  display: inline-block;
+  margin-left: 1rem;
+  color: #273799;
+//   background-color: #e0e0e0; // light gray
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  min-width: 100px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #cfcfcf;
+    text-decoration: none;
+  }
+}
+
+  }
+}

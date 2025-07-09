@@ -7,6 +7,7 @@ import { HomepageContentComponent } from './homepage-content/homepage-content/ho
 import { GalleryComponent } from './gallery/gallery/gallery.component';
 import { MemoirNoteComponent } from '../memoir-note/memoir-note/memoir-note.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { UserRegistrationComponent } from './user-registration/user-registration/user-registration.component';
 
 const routes: Routes = [
   // {
@@ -135,6 +136,10 @@ const routes: Routes = [
         {
           path: 'gallery',
           component: GalleryComponent
+        },
+            {
+          path: 'user-registration',
+          component: UserRegistrationComponent
         },
       
     ]
