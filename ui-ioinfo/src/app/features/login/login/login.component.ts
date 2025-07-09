@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../services/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
@@ -19,16 +19,23 @@ export class LoginComponent implements OnInit {
   password: string = '';
 
   loginform: any;
+sessionExpired:any;
 
-
-  constructor(private http: HttpClient, private router: Router, private authService:AuthService) {}
+  constructor(private http: HttpClient, private router: Router, private authService:AuthService,private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.loginform = new FormGroup({
 
       username: new FormControl('', [Validators.required, Validators.maxLength(50)]),
       password: new FormControl('', [Validators.required, Validators.maxLength(10)])
 
-    });  }
+    });  
+  
+   this.route.queryParams.subscribe(params => {
+    if (params['sessionExpired']) {
+      this.sessionExpired = true;
+    }
+  });
+  }
 
 
   login() {
