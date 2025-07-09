@@ -9,6 +9,7 @@ import { TopHeaderModule } from './top-header/top-header.module';
 import { GalleryModule } from './gallery/gallery.module';
 import { MaterialsModule } from '../materials/materials.module';
 import { CommonsblogModule } from './commonsblog/commonsblog.module';
+import { UserRegistrationModule } from './user-registration/user-registration.module';
 
 
 
@@ -28,7 +29,8 @@ import { CommonsblogModule } from './commonsblog/commonsblog.module';
     TopHeaderModule,
     GalleryModule,
     MaterialsModule,
-    CommonsblogModule
+    CommonsblogModule,
+    UserRegistrationModule
   ]
 })
 export class ContainersModule { }
