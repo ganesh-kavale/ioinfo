@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
+import com.ioinfo.info.service.SysIOInfoEmailService;
+
 @Configuration
 public class InfoAppConfiguration {
 
@@ -19,6 +21,10 @@ public class InfoAppConfiguration {
 		
 		return new RestTemplate();
 	}
+	
+	
+	
+
 	
 //	@Bean
 //	public WebMvcConfigurer corsConfigurer() {

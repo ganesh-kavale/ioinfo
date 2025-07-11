@@ -1,12 +1,10 @@
 package com.ioinfo.info.controller;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import com.ioinfo.info.entity.User;
+
 import javax.naming.AuthenticationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +35,6 @@ import com.ioinfo.info.repository.LoginRepository;
 import com.ioinfo.info.response.AddressResponse;
 import com.ioinfo.info.response.EmployeeResponse;
 import com.ioinfo.info.service.DataService;
-import com.ioinfo.info.service.EmailService;
 import com.ioinfo.info.service.InfoService;
 
 @CrossOrigin(origins = "http://localhost:4700", allowedHeaders = "*")
@@ -53,9 +50,6 @@ public class InfoController {
 	@Autowired
 	RestTemplate restTemplate;
 
-	/// Email
-	@Autowired
-	private EmailService emailService;
 
 	@PostMapping("testi")
 	public String abcd() {
@@ -234,7 +228,7 @@ public class InfoController {
 		Map<String, String> response = new HashMap<>();
 		response.put("message", "Email sent successfully" + email);
 
-		emailService.sendEmail(email);
+
 		return ResponseEntity.ok(response);
 	}
 
@@ -275,15 +269,23 @@ public class InfoController {
 	@PostMapping("/auth/login")
 	public ResponseEntity<?> login(@RequestBody User authRequest) throws AuthenticationException {
 
-		System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkk" + authRequest);
 		authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
 
-		System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww" + authRequest);
-
+//		This method triggers Spring Security's authentication process.
+//
+//		It sends the token to a chain of AuthenticationProviders
+//
+//		The default one is usually a DaoAuthenticationProvider, which:
+//
+//		Loads the user using your UserDetailsService
+//
+//		Compares the password (with encoder)
+//
+//		If it matches, returns an authenticated token 
+//		Sets Authentication Object in the SecurityContextHolder
+		
 		String token = jwtUtil.generateToken(authRequest.getUsername());
-
-		System.out.println("tokennnnnnnnnnnnnnnnnnnnn" + token);
 		return ResponseEntity.ok(new AuthResponse(token));
 	}
 
