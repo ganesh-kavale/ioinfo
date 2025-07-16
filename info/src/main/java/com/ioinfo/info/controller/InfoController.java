@@ -23,6 +23,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ioinfo.info.configuration.JwtUtil;
+import com.ioinfo.info.dto.UserDTO;
 import com.ioinfo.info.entity.AboutMe;
 import com.ioinfo.info.entity.AuthResponse;
 import com.ioinfo.info.entity.Employee;
@@ -65,6 +66,9 @@ public class InfoController {
 
 	@Autowired
 	DataService dataService;
+	
+	@Autowired
+	InfoService infoService;
 
 	@GetMapping("employeeDetailsById/{id}")
 	public ResponseEntity<EmployeeResponse> getEmployeedetailsById(@PathVariable("id") int id) {
@@ -289,4 +293,12 @@ public class InfoController {
 		return ResponseEntity.ok(new AuthResponse(token));
 	}
 
+	
+	@PostMapping("user-registration")
+	public ResponseEntity<UserDTO> saveUserRegistration(@RequestBody User user) {
+
+		System.out.println(user);
+		UserDTO useDTO = infoService.userRegistration(user);
+		return ResponseEntity.ok(useDTO);
+	}
 }

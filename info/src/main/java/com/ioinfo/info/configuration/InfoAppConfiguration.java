@@ -22,8 +22,7 @@ public class InfoAppConfiguration {
 		return new RestTemplate();
 	}
 	
-	
-	
+
 
 	
 //	@Bean
