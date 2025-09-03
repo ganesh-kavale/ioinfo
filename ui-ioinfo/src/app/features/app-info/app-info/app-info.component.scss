@@ -1,41 +1,17 @@
-// .login-container {
-//     max-width: 1200px;
-//     width: 100%;
-//     height: 100vh;
-//     margin-top: 1rem;
-//     margin-left: 15%;
-//     position: fixed;
-//     padding: 20px;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     min-height: 100vh;
-//     background-image: url('https://media.licdn.com/dms/image/v2/D5612AQEyjTPKimdQrQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1728313629884?e=2147483647&v=beta&t=R69zFiPTfZ9CstKu7QQS8tzbknchc78eP0RX2itlVLs');
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Takes full screen height */
+}
 
-
-//     // margin-top: 65px;
-
-//     // padding: 30px;
-//     // display: flex;
-//     // flex-direction: column;
-
-// }
-
-
-.login-container[_ngcontent-ng-c2965084942] {
-    // max-width: 1200px;
-    width: 100%;
-    height: 100vh;
-    /* margin-top: 1rem; */
-    /* margin-left: 15%; */
-    position: fixed;
-    padding: 20px;
-    display: flex
-;
-    min-height: 100vh;
-    background-image: url(https://media.licdn.com/dms/image/v2/D5612AQEyjTPKimdQrQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1728313629884?e=2147483647&v=beta&t=R69zFiPTfZ9CstKu7QQS8tzbknchc78eP0RX2itlVLs);
-    align-content: stretch;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    align-items: stretch;
+.login-container {
+  flex: 1; /* Expands to push footer down */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-image: url('https://media.licdn.com/dms/image/v2/D5612AQEyjTPKimdQrQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1728313629884?e=2147483647&v=beta&t=R69zFiPTfZ9CstKu7QQS8tzbknchc78eP0RX2itlVLs');
+  background-size: cover;
+  background-position: center;
 }

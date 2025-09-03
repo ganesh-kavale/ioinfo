@@ -34,4 +34,31 @@ export class PersonalDetailsService {
     
         return this.http.get<any>(serviceUrl, options);
       }
+
+
+
+
+       getPersonalBlogs(): Observable<any> {
+
+      let  serviceUrl= `${environment.rootUrl}` + "/employee-app/api/admin-personal-blogs";
+        
+    
+        // Get headers from SharedService
+        const headers: HttpHeaders | null = this.sharedService.getHeaders();
+    
+        // Use an empty HttpHeaders object if headers is null
+        const options = {
+          headers: headers ? headers : new HttpHeaders() // Fallback to an empty headers object
+        };
+    
+        console.log("urllddddddddddddddddddl", serviceUrl);
+    
+        this.http.get<any>(serviceUrl, options).forEach(element => {
+          console.log(element);
+    
+    
+        });;
+    
+        return this.http.get<any>(serviceUrl, options);
+      }
 }

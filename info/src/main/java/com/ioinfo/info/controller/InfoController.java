@@ -7,6 +7,9 @@ import java.util.Map;
 
 import javax.naming.AuthenticationException;
 
+import com.ioinfo.info.entity.*;
+import com.ioinfo.info.repository.BlogRepository;
+import com.ioinfo.info.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,13 +27,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ioinfo.info.configuration.JwtUtil;
 import com.ioinfo.info.dto.UserDTO;
-import com.ioinfo.info.entity.AboutMe;
-import com.ioinfo.info.entity.AuthResponse;
-import com.ioinfo.info.entity.Employee;
-import com.ioinfo.info.entity.HomepageCorousal;
-import com.ioinfo.info.entity.HomepageImageRow;
-import com.ioinfo.info.entity.NavigationNodes;
-import com.ioinfo.info.entity.User;
 import com.ioinfo.info.repository.InfoRepository;
 import com.ioinfo.info.repository.LoginRepository;
 import com.ioinfo.info.response.AddressResponse;
@@ -38,7 +34,7 @@ import com.ioinfo.info.response.EmployeeResponse;
 import com.ioinfo.info.service.DataService;
 import com.ioinfo.info.service.InfoService;
 
-@CrossOrigin(origins = "http://localhost:4700", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 @RestController
 public class InfoController {
 
@@ -50,6 +46,9 @@ public class InfoController {
 
 	@Autowired
 	RestTemplate restTemplate;
+
+	@Autowired
+	BlogService blogService;
 
 
 	@PostMapping("testi")
@@ -161,7 +160,7 @@ public class InfoController {
 		System.out.println("urlurlurlurlurlurlurlurlurl" + url);
 //		ResponseEntity<List<NavigationNodes>> response = restTemplate.exchange(url, HttpMethod.GET, null,
 //				new ParameterizedTypeReference<List<NavigationNodes>>() {
-//				});
+//		});
 
 		System.out.println("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
 		List<NavigationNodes> response = dataService.getNavigationNodeDetails();
@@ -276,6 +275,7 @@ public class InfoController {
 		authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
 
+		System.out.print("coming for authentification?!!!");
 //		This method triggers Spring Security's authentication process.
 //
 //		It sends the token to a chain of AuthenticationProviders
@@ -301,4 +301,19 @@ public class InfoController {
 		UserDTO useDTO = infoService.userRegistration(user);
 		return ResponseEntity.ok(useDTO);
 	}
+
+	//get all blogs
+
+	@GetMapping("/admin-personal-blogs")
+	public ResponseEntity<List<PersonalBlogs>> getAllPersonalBlogs() {
+
+		List<PersonalBlogs> response = blogService.getAllBlogs();
+
+		if (response.isEmpty()) {
+			return ResponseEntity.noContent().build();
+		}
+
+		return ResponseEntity.ok(response);
+	}
+
 }

@@ -1,33 +1,28 @@
-/* wrapper to hold both footers */
 .footer-wrapper {
   width: 100%;
 }
 
-/* Base footer container style */
 .footer-container {
   width: 100%;
   padding: 20px;
   text-align: center;
 }
 
-/* Primary Footer: menu + social row */
 .primary-footer {
   background-color: #f8f9fa;
   border-top: 1px solid #dee2e6;
 }
 
-/* flex row inside primary footer */
 .footer-section {
   display: flex;
-  justify-content: space-between; /* site links left, social right */
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 1200px;   /* optional: constrain width */
-  margin: 0 auto;      /* center section */
-  text-align: left;    /* left-align links */
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
 }
 
-/* both menus share common flex styles */
 .footer-menu,
 .social-menu {
   display: flex;
@@ -55,7 +50,6 @@
   color: #007bff;
 }
 
-/* Secondary Footer: copyright */
 .secondary-footer {
   background-color: #e9ecef;
   border-top: 1px solid #ccc;
@@ -63,14 +57,13 @@
   color: #555;
 }
 
-/* Responsive: stack both menus under each other */
 @media (max-width: 768px) {
   .footer-section {
     flex-direction: column;
     align-items: center;
     gap: 20px;
   }
-  
+
   .footer-menu,
   .social-menu {
     flex-direction: column;

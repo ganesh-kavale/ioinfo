@@ -32,23 +32,24 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                    "/testi",
-                    "/testiget",
-                    "/employeeDetailsById/**",
-                    "/getEmployeedetailsByModelMapperId/**",
-                    "/upload-file-data",
-                    "/testapi",
-                    "/image/**",
-                    "/save-employee",
-                    "/navigation-nodes",
-                    "/about-me",
-                    "/blogs",
-                    "/homepage-corousal",
-                    "/homepagetest",
-                    "/user/**",
-                    "/homepage-image-row",
-                    "/auth/login",
-                    "/user-registration"
+                        "/testi",
+                        "/testiget",
+                        "/employeeDetailsById/**",
+                        "/getEmployeedetailsByModelMapperId/**",
+                        "/upload-file-data",
+                        "/testapi",
+                        "/image/**",
+                        "/save-employee",
+                        "/navigation-nodes",
+                        "/about-me",
+                        "/blogs",
+                        "/homepage-corousal",
+                        "/homepagetest",
+                        "/user/**",
+                        "/homepage-image-row",
+                        "/auth/login",
+                        "/user-registration",
+                        "admin-personal-blogs"
                 ).permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -83,6 +84,6 @@ public class SecurityConfig {
                 .and()
                 .build();
     }
-    
-    
+
+
 }
