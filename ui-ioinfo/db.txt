@@ -112,3 +112,18 @@ CREATE TABLE users (
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL
 );
+
+
+
+CREATE TABLE blog_posts (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,      
+    title VARCHAR(255) NOT NULL,               -- Blog title
+    image_path VARCHAR(500) NOT NULL,          -- Path/URL of the image
+    details LONGTEXT NOT NULL,                 -- Blog content (large text)
+    story_timeline DATETIME NOT NULL,          -- When the story/event happened
+    likes INT DEFAULT 0,                       -- Count of likes
+    loves INT DEFAULT 0,                       -- Count of loves
+    shares INT DEFAULT 0,                      -- Count of shares
+    supports INT DEFAULT 0,                    -- Count of supports
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

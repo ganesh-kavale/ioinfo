@@ -1,24 +1,58 @@
+<!-- Normal Blog List -->
+<div class="blog-container full-story-container" *ngIf="!readFullStory">
+  <mat-card class="mat-card-container-blogs"
+            appearance="outlined"
+            *ngFor="let blog of blogs$ | async; let i = index">
 
-<div class="blog-container">
-    <mat-card class="mat-card-container-blogs" appearance="outlined" *ngFor="let image of imageUrls; let i = index">
-   
-        <mat-card-content class="image-container">
-            <img [src]="image" class="photos" [alt]="image">
-        </mat-card-content>
-        <mat-card-content>
-            {{longText}}                            
-        </mat-card-content>        
-        <mat-card-header>
-            <mat-card-title>Like Share</mat-card-title>
-            <div class="icon-container">
-                <mat-icon class="icon" (click)="onLike(i)">thumb_up</mat-icon>
-                <mat-icon class="icon" (click)="onShare(i)">share</mat-icon>
-                <mat-icon class="icon" (click)="onShare(i)">linkedin</mat-icon>
-                <mat-icon class="icon" (click)="onShare(i)">camera</mat-icon>
-                <mat-icon class="icon" (click)="onShare(i)">facebook</mat-icon>
-                <mat-icon class="icon" (click)="onShare(i)">whatsapp</mat-icon>
-            </div>
-        </mat-card-header>
-    </mat-card>
+    <mat-card-content class="image-container">
+      <img [src]="blog.imagePath" class="photos" [alt]="blog.imagePath">
+    </mat-card-content>
+
+    <mat-card-content>
+      <div class="details-text">
+        {{ blog.details }}
+      </div>
+      <a class="read-more" (click)="toggleExpand(blog, i)">Read More...</a>
+    </mat-card-content>
+
+    <mat-card-header>
+      <mat-card-title>Like Share</mat-card-title>
+      <div class="icon-container">
+        <mat-icon class="icon" (click)="onLike(i)">thumb_up</mat-icon>
+        <mat-icon class="icon" (click)="onShare(i)">share</mat-icon>
+        <mat-icon class="icon" (click)="onShare(i)">linkedin</mat-icon>
+        <mat-icon class="icon" (click)="onShare(i)">camera</mat-icon>
+        <mat-icon class="icon" (click)="onShare(i)">facebook</mat-icon>
+        <mat-icon class="icon" (click)="onShare(i)">whatsapp</mat-icon>
+      </div>
+    </mat-card-header>
+  </mat-card>
 </div>
 
+<!-- Full Story View -->
+<div class="full-story-container" *ngIf="readFullStory && expandedBlog">
+  <mat-card class="full-story-card" appearance="outlined">
+    <mat-card-content class="image-container">
+      <img [src]="expandedBlog.imagePath" class="photos" [alt]="expandedBlog.imagePath">
+    </mat-card-content>
+
+    <mat-card-content>
+      <div class="full-details-text">
+        {{ expandedBlog.details }}
+      </div>
+      <a class="back-link" (click)="toggleExpand(expandedBlog, -1)">← Back to Blogs</a>
+    </mat-card-content>
+
+    <mat-card-header>
+      <mat-card-title>Like Share</mat-card-title>
+      <div class="icon-container">
+        <mat-icon class="icon" (click)="onLike(expandedBlog)">thumb_up</mat-icon>
+        <mat-icon class="icon" (click)="onShare(expandedBlog)">share</mat-icon>
+        <mat-icon class="icon" (click)="onShare(expandedBlog)">linkedin</mat-icon>
+        <mat-icon class="icon" (click)="onShare(expandedBlog)">camera</mat-icon>
+        <mat-icon class="icon" (click)="onShare(expandedBlog)">facebook</mat-icon>
+        <mat-icon class="icon" (click)="onShare(expandedBlog)">whatsapp</mat-icon>
+      </div>
+    </mat-card-header>
+  </mat-card>
+</div>

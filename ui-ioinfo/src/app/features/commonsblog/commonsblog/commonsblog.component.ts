@@ -1,67 +1,70 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { PersonalDetailsService } from '../../../../services/personal-details.service';
+import { Observable } from 'rxjs';
+
+interface Blog {
+  id: number;
+  title: string;
+  imagePath: string;
+  details: string;
+  storyTimeline: string;
+  likes: number;
+  loves: number;
+  shares: number;
+  supports: number;
+  createdAt: string;
+}
 
 @Component({
   selector: 'app-commonsblog',
   templateUrl: './commonsblog.component.html',
-  styleUrl: './commonsblog.component.scss',
+  styleUrls: ['./commonsblog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CommonsblogComponent implements OnInit{
-  ngOnInit(): void {
-    // throw new Error('Method not implemented.');
-  }
+export class CommonsblogComponent implements OnInit {
+title: string = "";
+readFullStory:boolean=false;
 
-  longText = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut illo quibusdam voluptas iste repellendus, possimus facere eaque, at dolorem eum dicta ullam aspernatur, ipsam exercitationem sequi vel fuga minima deserunt quasi! Beatae asperiores iure illum voluptatibus praesentium.' ;
+constructor(private personalDetailsService: PersonalDetailsService) {}
 
-  
-  imageUrls = [
-    '../../../assets/images/image1.jpg',
-    '../../../assets/images/image2.jpg',
+blogs$!: Observable<Blog[]>;
 
-    '../../../assets/images/image3.jpg',
-
-    '../../../assets/images/image4.jpg',
-
-    '../../../assets/images/image5.jpg',
-
-    '../../../assets/images/image1.jpg',
-    '../../../assets/images/image2.jpg',
-
-    '../../../assets/images/image3.jpg',
-
-    '../../../assets/images/image4.jpg',
-
-    '../../../assets/images/image5.jpg',
-
-
-    '../../../assets/images/image1.jpg',
-    '../../../assets/images/image2.jpg',
-
-    '../../../assets/images/image3.jpg',
-
-    '../../../assets/images/image4.jpg',
-
-    '../../../assets/images/image5.jpg',
-
-
-    '../../../assets/images/image1.jpg',
-    '../../../assets/images/image2.jpg',
-
-    '../../../assets/images/image3.jpg',
-
-    '../../../assets/images/image4.jpg',
-
-    '../../../assets/images/image5.jpg',
-
-
-  ];
-
-  onLike(index:any) {
-    console.log('Liked card:', index);
+ngOnInit(): void {
+  this.title = "hhhhhhhhhhhhhh";
+  this.blogs$ = this.personalDetailsService.getPersonalBlogs();
 }
 
- onShare(index:any) {
-    console.log('Shared card:', index);
+
+  onLike(blog: any) {
+    console.log('Liked blog:', blog.id);
+  }
+
+  onShare(blog: any) {
+    console.log('Shared blog:', blog.id);
+  }
+
+  onLove(blog: any) {
+    console.log('Loved blog:', blog.id);
+  }
+
+  onSupport(blog: any) {
+    console.log('Supported blog:', blog.id);
+  }
+
+
+// readFullStory: boolean = false;
+expandedBlog: any | null = null;
+
+toggleExpand(blog: any, index: number) {
+  if (this.readFullStory && this.expandedBlog === blog) {
+    // Collapse
+    this.readFullStory = false;
+    this.expandedBlog = null;
+  } else {
+    // Expand
+    this.readFullStory = true;
+    this.expandedBlog = blog;
+  }
 }
 
 }

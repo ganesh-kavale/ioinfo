@@ -1,0 +1,105 @@
+Side bar
+
+    public sidebarShow: boolean = true;
+
+<div class="outer">
+  <!-- Sidebar and Opener go here -->
+  <div class="sidebar-container">
+    <div class="sidebar-opener" (click)="sidebarShow = !sidebarShow">
+      Click me to open/close the sidebar
+    </div>
+
+    <div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow">
+      <div class="sidebar-close" (click)="sidebarShow = false">X</div>
+      <div class="sidebar-content">
+        <h2>Sidebar</h2>
+        <div>Home Page</div>
+        <div>About Us</div>
+        <div>Services</div>
+        <div>Prices</div>
+        <div>Downloads</div>
+        <div>Contact Us</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Regular content -->
+ <div class="inner">
+      <p>Paragraph 1 in first div. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum iusto dolore voluptate, illo consectetur labore ut dolorum, nihil dolorem eos, iste doloribus porro! Ullam mollitia voluptates minus. Veritatis pariatur sunt provident animi. Voluptates possimus nam id aliquid tempore earum, rerum dolor dignissimos accusamus, ad dolore doloribus doloremque itaque consequatur soluta?</p>
+      <p>Paragraph 2 in first div. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores quisquam reprehenderit esse accusamus ex delectus, repellat sunt doloribus aspernatur voluptas.</p>
+      <p>Paragraph 3 in first div. Lorem ipsum dolor sit amet.</p>
+    </div>
+    <div class="inner">
+      <p>Paragraph 1 in second div. Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur illum quis ea, rem magni cumque architecto voluptate reprehenderit consequuntur eaque facilis quidem, provident itaque facere quae sint aspernatur eveniet perspiciatis.</p>
+      <p>Paragraph 2 in second div. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, possimus nobis nisi asperiores id doloremque neque natus commodi tempore veniam, culpa, perspiciatis sunt error! Veniam et similique blanditiis molestias at architecto ullam officiis? Tempore distinctio corporis laboriosam. Assumenda animi veniam laboriosam, maiores, ratione dignissimos praesentium earum inventore vitae est vero.</p>
+      <p>Paragraph 3 in second div.</p>
+      <p>Paragraph 3 in second div. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem, magni? Earum modi placeat maxime harum sequi. Quibusdam facere excepturi hic aut nulla ut? Nisi pariatur fuga animi hic ad similique fugit quisquam voluptas veritatis impedit nam aliquid sed aliquam, quas quam laudantium? Perferendis dolores aperiam quas quisquam dignissimos repudiandae at rem ad nisi aliquid. Sed sequi, quidem cupiditate in recusandae temporibus dolores, consequuntur facere aperiam ducimus voluptatibus dolorum mollitia illo, natus possimus? Saepe aperiam, molestias quia accusantium animi facilis quasi. Perspiciatis ipsum quibusdam incidunt, minus officia harum rerum ratione ducimus cupiditate totam corrupti nemo magni! Perferendis provident magni quis vero laboriosam optio laborum incidunt voluptatum suscipit iste eligendi molestiae asperiores nihil aperiam veritatis nesciunt in, veniam repudiandae tempora ex ad velit. Sequi rerum sed cumque modi voluptatibus odit accusamus qui nulla repudiandae, aliquid voluptas quaerat hic tenetur consectetur doloribus perferendis repellat cupiditate rem, distinctio sapiente non quod temporibus fugiat. A quas rerum officia maiores consequatur quae, quis ratione dolore voluptates id obcaecati temporibus magni neque aliquam. Quos accusamus ea, quasi similique, quas voluptatibus fugit expedita rerum possimus in necessitatibus a perspiciatis repellat, adipisci iusto vero suscipit odit explicabo deleniti consequatur? Enim ullam dolorum est consequuntur praesentium repellendus voluptatem unde ipsam sequi quod reprehenderit consequatur qui suscipit rem repellat facere fugiat corporis, culpa tempore quas? Tempore, enim accusantium? Quisquam maxime velit est modi illo unde soluta numquam nobis debitis perferendis explicabo dolorum, eum assumenda iure in eos expedita aliquam quos nostrum dolore architecto animi? Accusamus perspiciatis, nihil consequatur labore earum in corporis hic facilis voluptatibus nulla. Iste sit animi dicta dolor, accusantium tempora magnam sapiente labore inventore, expedita itaque quos at doloremque? Voluptatem, architecto minima. Provident modi vitae exercitationem natus eos repellat eaque quas pariatur molestiae, fugiat reprehenderit labore aspernatur. Libero eveniet qui dolorem earum nihil nostrum cum cumque saepe iste tempora voluptas asperiores, labore quis enim! Ratione vel esse tenetur culpa. Molestiae quos, ipsa sapiente neque officiis accusantium, suscipit placeat aut illum dolorem aspernatur quibusdam cum similique tenetur tempora deserunt. Architecto dolorum quam ipsum deleniti molestias quas earum soluta, inventore, ea tempora consequuntur nostrum perferendis fuga ullam distinctio dicta incidunt nam laborum velit. Ipsa, officiis molestiae, facere illo vitae vero minima omnis sed culpa eius ex quis, sint doloremque sunt? Vel nisi ab ullam dolor commodi. Qui doloribus nostrum quod quas nemo similique sit ab ullam dolore provident, tempore voluptas ipsum, in dolorum! Consequuntur sequi cum, consectetur ab nostrum ipsa laborum ipsum incidunt itaque culpa, repudiandae architecto suscipit magni beatae praesentium exercitationem libero eum animi. Consequuntur, nihil odit, pariatur consequatur placeat et maiores esse exercitationem voluptatum vel obcaecati sint dolorum unde impedit nesciunt in facilis beatae dicta culpa rerum officia saepe! Porro, nulla ab. Maiores harum, sapiente dignissimos adipisci aut quidem a cupiditate animi repellat voluptates beatae enim debitis voluptatibus, odit atque vero reprehenderit velit, dolores ut temporibus reiciendis quasi explicabo? Esse quo accusamus nesciunt alias enim quia, repudiandae vero soluta a culpa, iure repellat veritatis corrupti ipsa tenetur possimus rerum voluptas perspiciatis reiciendis quis consequuntur maiores quas ad? Provident.</p>
+    </div>
+</div>
+
+
+.outer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  position: relative;
+  overflow: hidden; /* important to contain sliding sidebar */
+}
+
+.inner {
+  margin-bottom: 20px;
+}
+
+p {
+  text-align: left;
+  margin: 8px 0;
+}
+
+.sidebar-container {
+  position: relative;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.sidebar-opener {
+  cursor: pointer;
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.sidebar-slider {
+  position: absolute;
+  top: 40px; /* push below opener */
+  left: 0;
+  width: 250px;
+  background-color: #333;
+  color: white;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.sidebar-slide-in {
+  transform: translateX(0%);
+}
+
+.sidebar-close {
+  text-align: right;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #ffcccc;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
