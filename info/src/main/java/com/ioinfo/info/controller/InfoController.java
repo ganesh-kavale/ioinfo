@@ -37,7 +37,7 @@ import com.ioinfo.info.response.EmployeeResponse;
 import com.ioinfo.info.service.DataService;
 import com.ioinfo.info.service.InfoService;
 
-@CrossOrigin(origins = "http://localhost:4700", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 @RestController
 public class InfoController {
 
