@@ -39,8 +39,9 @@ export class AuthInterceptor implements HttpInterceptor {
           if (isPlatformBrowser(this.platformId)) {
             localStorage.removeItem('token');
           }
-          this.router.navigate(['/login'], {
-            queryParams: { sessionExpired: true }
+          this.router.navigate(['/login']
+            , {
+            // queryParams: { sessionExpired: true }
           });
         }
         return throwError(() => error);

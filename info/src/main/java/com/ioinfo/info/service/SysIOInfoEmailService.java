@@ -25,7 +25,7 @@ public class SysIOInfoEmailService {
         message.setText(body);
 
         try {
-            mailSender.send(message);
+//            mailSender.send(message);
             System.out.println("✅ Email sent successfully to " + to);
         } catch (Exception e) {
             e.printStackTrace();

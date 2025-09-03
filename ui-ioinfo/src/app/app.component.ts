@@ -13,15 +13,23 @@ export class AppComponent {
   private timeout: any;
 
     constructor(private authService: AuthService, private router: Router, @Inject(PLATFORM_ID) private platformId: Object) {}
-
+endpointUrl:any;
   ngOnInit(): void {
+
+    const currentUrl = window.location.href;
+  const segments = currentUrl.split('/');
+  let lastSegment = segments.pop() || '';
+  this.endpointUrl=lastSegment;
+
     this.authService.clearTokenIfExpired();
     this.resetSessionTimer();
 
       if (isPlatformBrowser(this.platformId)) {
 
     if (!localStorage.getItem('token')) {
-      this.router.navigate(['/login'], { queryParams: { sessionExpired: true } });
+      this.router.navigate(['/'+this.endpointUrl], { 
+        // queryParams: { sessionExpired: true } 
+      });
     }}
    
   }
@@ -35,7 +43,10 @@ export class AppComponent {
       if (this.authService.isTokenExpired()) {
          if (isPlatformBrowser(this.platformId)) {
         localStorage.removeItem('token');
-        this.router.navigate(['/login'], { queryParams: { sessionExpired: true } });
+        this.router.navigate(['/'+this.endpointUrl], 
+          {
+            //  queryParams: { sessionExpired: true } 
+            });
       }
     }
     });  
