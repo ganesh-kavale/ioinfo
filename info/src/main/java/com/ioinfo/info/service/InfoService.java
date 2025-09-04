@@ -4,11 +4,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
+import com.ioinfo.info.entity.UserRegistration;
+import com.ioinfo.info.repository.UserRegistrationRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,6 +33,15 @@ public class InfoService {
 
 	@Autowired
 	LoginRepository userRepository;
+
+	@Autowired
+	private UserRegistrationRepository userRegistrationRepository;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	private SysIOInfoEmailService sysIOInfoEmailService;
 
 	private final String uploadDir = "D:/images/";
 
@@ -132,9 +146,34 @@ public class InfoService {
 		return empRepo.save(employee);
 	}
 
-	public UserDTO userRegistration(User user) {
-		User userDetails = userRepository.save(user);
+	public UserDTO userRegistration(UserRegistration userRegister) {
+		// ✅ Save registration details
+		UserRegistration userDetails = userRegistrationRepository.save(userRegister);
+
+		// ✅ Create login credentials
+		User newLoginCredentials = new User();
+		newLoginCredentials.setUsername(userRegister.getUsername());
+
+		// 🔑 Encrypt password before saving
+		String encodedPassword = passwordEncoder.encode(userRegister.getPassword());
+		newLoginCredentials.setPassword(encodedPassword);
+
+		userRepository.save(newLoginCredentials);
+
+		// ✅ Prepare variables for email template
+		Map<String, Object> templateModel = new HashMap<>();
+		templateModel.put("name", userRegister.getUsername());
+		templateModel.put("loginUrl", "http://localhost:4200/login"); // 🔗 Replace with your actual login URL
+
+		// ✅ Send Welcome Email using template
+		sysIOInfoEmailService.sendEmailWithTemplate(
+				userRegister.getEmailId(),                             // recipient
+				"🎉 Welcome to Our Platform!",                       // subject
+				"user-registration-template.html",                   // Thymeleaf template
+				templateModel                                        // template variables
+		);
+
+		// ✅ Return response as DTO
 		return modelMapper.map(userDetails, UserDTO.class);
 	}
-
 }
