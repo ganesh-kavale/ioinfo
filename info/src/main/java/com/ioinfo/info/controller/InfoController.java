@@ -295,7 +295,7 @@ public class InfoController {
 
 	
 	@PostMapping("user-registration")
-	public ResponseEntity<UserDTO> saveUserRegistration(@RequestBody User user) {
+	public ResponseEntity<UserDTO> saveUserRegistration(@RequestBody UserRegistration user) {
 
 		System.out.println(user);
 		UserDTO useDTO = infoService.userRegistration(user);
