@@ -17,7 +17,8 @@ public class AboutMe {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "profilesummary")
+	@Lob
+	@Column(columnDefinition = "TEXT")
 	private String profilesummary;
 
 	@Column(name = "education")

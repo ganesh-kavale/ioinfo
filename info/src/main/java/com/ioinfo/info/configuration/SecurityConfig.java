@@ -49,7 +49,8 @@ public class SecurityConfig {
                         "/homepage-image-row",
                         "/auth/login",
                         "/user-registration",
-                        "admin-personal-blogs"
+                        "admin-personal-blogs",
+                        "/lets-connect"
                 ).permitAll()
                 .anyRequest().authenticated()
                 .and()

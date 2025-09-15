@@ -9,63 +9,60 @@ import { SharedService } from './shared.service';
 })
 export class UserService {
 
-    // /auth-service/api
- constructor(private http: HttpClient, private sharedService: SharedService) { }
- 
+  // /auth-service/api
+  constructor(private http: HttpClient, private sharedService: SharedService) { }
+
   saveUser(registrationForm: any): Observable<any> {
-  const saveUserUrl = `${environment.rootUrl}/employee-app/api/user-registration`;
-const body = {
-  name:  registrationForm.value.name,
-  emailId:  registrationForm.value.emailId,
-  mobileNo:  registrationForm.value.mobileNo,
-  username:  registrationForm.value.emailId,   // Optional: if backend uses email as username
-  password:  registrationForm.value.password
-};
+    const saveUserUrl = `${environment.rootUrl}/employee-app/api/user-registration`;
+    const body = {
+      name: registrationForm.value.name,
+      emailId: registrationForm.value.emailId,
+      mobileNo: registrationForm.value.mobileNo,
+      username: registrationForm.value.emailId,   // Optional: if backend uses email as username
+      password: registrationForm.value.password
+    };
 
-  const headers = new HttpHeaders({
-    'Content-Type': 'application/json'
-  });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
 
 
-  console.log('[saveUser] POST URL:', saveUserUrl);
-  console.log('[saveUser] Form Data:', body);
+    console.log('[saveUser] POST URL:', saveUserUrl);
+    console.log('[saveUser] Form Data:', body);
 
-  return this.http.post<any>(saveUserUrl, body, { headers }).pipe(
-    map((response) => {
-      console.log('[saveUser] Response:', response);
-      return response; // responseType is default JSON
+    return this.http.post<any>(saveUserUrl, body, { headers }).pipe(
+      map((response) => {
+        console.log('[saveUser] Response:', response);
+        return response; // responseType is default JSON
+      })
+    );
+  }
+  baseUrl = "http://localhost:8091";
+  letsConnect(letsConnectForm: any, selectedFile: any): Observable<any> {
+  const formData: FormData = new FormData();
+
+  formData.append('file', selectedFile);
+  formData.append('body', letsConnectForm.value.body);
+  formData.append('emailId', letsConnectForm.value.emailId);
+  formData.append('mobileNo', letsConnectForm.value.mobileNo);
+  formData.append('subject', letsConnectForm.value.subject);
+  formData.append('name', letsConnectForm.value.name);
+
+  this.baseUrl = `${environment.rootUrl}/employee-app/api`;
+  const serviceUrlFile = `${this.baseUrl}/lets-connect`;
+
+  // ❌ don’t set Content-Type manually, browser will set multipart boundary
+  return this.http.post(serviceUrlFile, formData, { responseType: 'text' }).pipe(
+    map((response: any) => {
+      try {
+        return JSON.parse(response);
+      } catch {
+        return response;
+      }
     })
   );
 }
 
-//  saveUser(registrationForm: any): Observable<any> {  
-  
-//     const body = {       "username": registrationForm.value.username, "password":registrationForm.value.password }; // Ensure matching request body
-
- 
-//     // const loginConfirmUrl = `${this.baseUrl}/auth/login`;
-//   const loginConfirmUrl = `${environment.rootUrl}/employee-app/api/user-registration`;
 
 
-//     console.log(loginConfirmUrl);
-//     console.log(body);
-    
-//     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-//     return this.http.post<any>(loginConfirmUrl, body, { headers }).pipe(
-//       tap(response => {
-//         if (response.token) {
-//           localStorage.setItem('token', response.token); // Store JWT token
-//           console.log("Login Successful:", response);
-//         }
-//       }),
-//       catchError(error => {
-//         console.error("Login Failed:", error);
-//         return throwError(error);
-//       })
-//     );
-//   }
-
-
- }
- 
+}
