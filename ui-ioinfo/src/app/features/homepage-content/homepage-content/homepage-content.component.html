@@ -147,6 +147,19 @@
             </td>
           </tr>
 
+          <!-- Name -->
+          <tr>
+            <td><label for="name">Name:<span>*</span></label></td>
+            <td>
+              <input type="name" id="name" formControlName="name" placeholder="Enter your name" />
+              <div class="error" *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid"
+                [ngStyle]="{'color':'red'}">
+                <small *ngIf="contactForm.get('name')?.errors?.['required']">Name is required.</small>
+                <small *ngIf="contactForm.get('name')?.errors?.['maxlength']">Max 255 characters allowed.</small>
+              </div>
+            </td>
+          </tr> 
+          
           <!-- Email -->
           <tr>
             <td><label for="email">Email Address:<span>*</span></label></td>
@@ -193,6 +206,19 @@
               <div class="error" *ngIf="contactForm.get('body')?.touched && contactForm.get('body')?.invalid"
                 [ngStyle]="{'color':'red'}">
                 <small *ngIf="contactForm.get('body')?.errors?.['required']">Message is required.</small>
+              </div>
+            </td>
+          </tr>
+
+                 <!-- File Upload -->
+          <tr>
+            <td><label for="file">Upload File:<span>*</span></label></td>
+            <td>
+               <input type="file" formControlName="file" rows="4"  (change)="onFileSelected($event)"/>
+             
+              <div class="error" *ngIf="contactForm.get('file')?.touched && contactForm.get('file')?.invalid"
+                [ngStyle]="{'color':'red'}">
+                <small *ngIf="contactForm.get('file')?.errors?.['required']">Please upload file!</small>
               </div>
             </td>
           </tr>

@@ -1,0 +1,144 @@
+<div class="outer">
+    <h1>Log AI Analyser</h1>
+
+    <div class="columns">
+        <!-- Sidebar -->
+        <div class="sidebar-container">
+            <div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow">
+                <div class="sidebar-content">
+                    <div (click)="selectedSection = 'logDetails'">Log History</div>
+                    <div (click)="selectedSection = 'classified'">AI-Classified Logs</div>
+                    <div (click)="selectedSection = 'services'">Log Discussions</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-column">
+            <ng-container [ngSwitch]="selectedSection">
+                <div *ngSwitchCase="'logDetails'" class="inner">
+
+                    <mat-tab-group [(selectedIndex)]="selectedTabIndex" (selectedTabChange)="onTabChange($event)">
+                        <mat-tab label="Client Logs">
+
+                            <h2 class="text-xl font-bold mb-4">Latest Logs</h2>
+                            <div *ngIf="frontendError && frontendError.length > 0; else noLogs">
+                                <div *ngFor="let log of frontendError" class="border-b py-2 text-sm">
+                                    <div><strong>Level:</strong> {{ log.level }}</div>
+                                    <div><strong>Service:</strong> {{ log.service }}</div>
+                                    <div><strong>Message:</strong> {{ log.message }}</div>
+                                    <div><strong>Time:</strong> {{ log.timestamp | date:'short' }}</div>
+                                </div>
+                            </div>
+
+                            <ng-template #noLogs>
+                                <p>No logs available.</p>
+                            </ng-template>
+                        </mat-tab>
+                        <mat-tab label="Server Logs">
+                            <!-- <div class="p-4 bg-white shadow rounded"> -->
+                            <h2 class="text-xl font-bold mb-4">Latest Logs</h2>
+                            <div *ngIf="logs && logs.length > 0; else noLogs">
+                                <div *ngFor="let log of logs" class="border-b py-2 text-sm">
+                                    <div><strong>Level:</strong> {{ log.level }}</div>
+                                    <div><strong>Service:</strong> {{ log.service }}</div>
+                                    <div><strong>Message:</strong> {{ log.message }}</div>
+                                    <div><strong>Time:</strong> {{ log.timestamp | date:'short' }}</div>
+                                </div>
+                            </div>
+
+                            <ng-template #noLogs>
+                                <p>No logs available.</p>
+                            </ng-template>
+                        </mat-tab>
+                    </mat-tab-group>
+
+
+
+
+                    <!-- </div> -->
+
+
+                </div>
+
+                <div *ngSwitchCase="'classified'" class="inner">
+                    <p>Paragraph 1 in second div (CLASSIFIED)...</p>
+                    <p>Paragraph 2 in second div...</p>
+                    <p>Paragraph 3 in second div...</p>
+
+
+
+                    <h2 class="text-xl font-bold mb-4">Latest Classified Logs</h2>
+                            <div *ngIf="classifiedLogs && classifiedLogs.length > 0; else noLogs">
+                                <div *ngFor="let log of classifiedLogs" class="border-b py-2 text-sm">
+                                    <div><strong>Level:</strong> {{ log.status }}</div>
+                                    <div><strong>Severity:</strong> {{ log.severity }}</div>
+                                    <div><strong>Message:</strong> {{ log.root_cause }}</div>
+                                    <div><strong>Summary:</strong> {{ log.summary }}</div>
+                                    <div><strong>Description:</strong> {{ log.description }}</div>
+                                </div>
+                            </div>
+
+                            <ng-template #noLogs>
+                                <p>No logs available.</p>
+                            </ng-template>
+
+                </div>
+
+                <div *ngSwitchCase="'services'" class="discussion-section">
+
+
+                    <div class="chat-wrapper">
+
+                        <!-- Messages Below -->
+                        <div class="chat-container">
+                            <!-- Top Right Button -->
+                            <div class="chat-header">
+                                <button class="new-discussion-btn" (click)="startNewDiscussion()">New
+                                    Discussion</button>
+                            </div>
+
+                            <!-- Message Box -->
+                            <div class="chat-box">
+                                <div *ngFor="let msg of  msgs.slice().reverse()" class="chat-container">
+                                    <!-- First Row: User Message (Right) -->
+                                    <div class="message-row right">
+                                        <div class="message-bubble user">{{ msg.message }}</div>
+                                    </div>
+
+                                    <!-- Second Row: AI Reply (Left) -->
+                                    <div class="message-row left">
+                                        <div class="message-bubble ai">{{ msg.reply }}</div>
+                                    </div>
+                                </div>
+
+                                     <div class="message-row right">
+                                        <div class="message-bubble user" *ngIf="tempInput">{{ tempInput }}</div>
+                                    </div>
+
+
+                            </div>
+                        </div>
+
+                        <!-- Input Box -->
+                        <div class="send-style">
+                            <input type="text" [(ngModel)]="inputText" (keyup.enter)="discussions()"
+                                placeholder="Type your discussion here..." />
+                            <div class="send-button">
+                                <button (click)="discussions()">Send</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+                <div *ngSwitchDefault>
+                    <p>Please select an option from the sidebar.</p>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

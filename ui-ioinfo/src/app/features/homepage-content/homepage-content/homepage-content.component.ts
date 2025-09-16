@@ -4,6 +4,7 @@ import { log } from 'console';
 import { EmailService } from '../../../../services/email.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IoinfoImagesRetriveService } from '../../../../services/ioinfo-images-retrive.service';
+import { UserService } from '../../../../services/user.service';
 
 @Component({
   selector: 'app-homepage-content',
@@ -19,7 +20,7 @@ export class HomepageContentComponent implements OnInit {
   contactForm1: any;
   imageRows:any[]=[];
   letter:any;
-  constructor(private homepageCorousal: HomepageCorousalService, private emailService: EmailService, private ioinfoImagesRetriveService: IoinfoImagesRetriveService) {
+  constructor(private homepageCorousal: HomepageCorousalService, private emailService: EmailService, private ioinfoImagesRetriveService: IoinfoImagesRetriveService, private userService: UserService) {
 
   }
 
@@ -43,11 +44,19 @@ this.letter='WORK';
       ]),
       body: new FormControl('', [
         Validators.required
-      ])
+      ]),
+         file: new FormControl('', [
+        Validators.required
+      ]),
+       name: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255)
+      ]),
     });
 
 
     console.log(this.imageUrls);
+
 
 
 
@@ -69,8 +78,18 @@ this.letter='WORK';
 
     
   }
+selectedFile:any;
+    onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+  }
   onSubmit(contactForm: any) {
-    console.log(contactForm);
+    console.log(contactForm.value,this.selectedFile );
+
+    this.userService.letsConnect(contactForm,this.selectedFile).subscribe((res:any)=>{
+
+      console.log("rrrrrrrrrrrrr",res);
+      
+    })
 
   }
 

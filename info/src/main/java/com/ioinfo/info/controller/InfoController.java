@@ -1,27 +1,27 @@
 package com.ioinfo.info.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.naming.AuthenticationException;
 
+import com.ioinfo.info.dto.LetsConnectDTO;
 import com.ioinfo.info.entity.*;
 import com.ioinfo.info.repository.BlogRepository;
 import com.ioinfo.info.service.BlogService;
+import jakarta.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,7 +33,7 @@ import com.ioinfo.info.response.AddressResponse;
 import com.ioinfo.info.response.EmployeeResponse;
 import com.ioinfo.info.service.DataService;
 import com.ioinfo.info.service.InfoService;
-
+//To add new API add it in the Security Config, Otherwise you will get an 403 http error in api.
 @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 @RestController
 public class InfoController {
@@ -125,11 +125,11 @@ public class InfoController {
 		}
 	}
 
-	@PostMapping("/testapi")
-	public String uploadImage() {
-
-		return "Ok test";
-	}
+//	@PostMapping("/testapi")
+//	public String uploadImage() {
+//
+//		return "Ok test";
+//	}
 
 	@GetMapping("/image/{id}")
 	public ResponseEntity<byte[]> getImage(@PathVariable Long id) {
@@ -316,4 +316,36 @@ public class InfoController {
 		return ResponseEntity.ok(response);
 	}
 
+	//Lets Connect
+	private static final String UPLOAD_DIR = "D:/WorkJava/ioinfo/ioinfo/info/src/main/resources/templates/";
+
+	Part part;
+	@PostMapping(value = "/lets-connect", consumes = "multipart/form-data")
+	public ResponseEntity<String> letsConnect(
+			@RequestPart("file") MultipartFile file,
+			@RequestPart("body") String body,
+			@RequestPart("emailId") String emailId,
+			@RequestPart("mobileNo") String mobileNo,
+			@RequestPart("subject") String subject,
+			@RequestPart("name") String name) {
+		try {
+
+			String filePath = dataService.saveFileToLocation(file);
+
+			LetsConnectDTO dto = new LetsConnectDTO();
+			dto.setBody(body);
+			dto.setEmailId(emailId);
+			dto.setMobileNo(mobileNo);
+			dto.setSubject(subject);
+			dto.setName(name);
+			infoService.letsConnectUsers(dto,filePath);
+			return ResponseEntity.ok(
+							". Thank you for your interest. We’ll connect with you soon via the shared email address!"
+			);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(500).body("File upload failed: " + e.getMessage());
+		}
+	}
 }

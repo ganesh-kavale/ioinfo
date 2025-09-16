@@ -7,7 +7,10 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.ioinfo.info.dto.LetsConnectDTO;
+import com.ioinfo.info.entity.LetsConnect;
 import com.ioinfo.info.entity.UserRegistration;
+import com.ioinfo.info.repository.LetsConnectUsersRepository;
 import com.ioinfo.info.repository.UserRegistrationRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +47,10 @@ public class InfoService {
 	private SysIOInfoEmailService sysIOInfoEmailService;
 
 	private final String uploadDir = "D:/images/";
+
+	@Autowired
+	private LetsConnectUsersRepository letsConnectUsersRepository;
+
 
 	public EmployeeResponse getEmployeedetailsById(int id) {
 
@@ -175,5 +182,30 @@ public class InfoService {
 
 		// ✅ Return response as DTO
 		return modelMapper.map(userDetails, UserDTO.class);
+	}
+
+	public LetsConnectDTO letsConnectUsers(LetsConnectDTO letsConnectUsers,String filePath) {
+
+		LetsConnect newLetsConnectUser = new LetsConnect();
+
+		newLetsConnectUser.setBody(letsConnectUsers.getBody());
+		newLetsConnectUser.setSubject(letsConnectUsers.getSubject());
+		newLetsConnectUser.setName(letsConnectUsers.getName());
+		newLetsConnectUser.setEmailId(letsConnectUsers.getEmailId());
+		newLetsConnectUser.setMobileNo(letsConnectUsers.getMobileNo());
+		newLetsConnectUser.setFilePath(filePath);
+		letsConnectUsersRepository.save(newLetsConnectUser);
+
+		Map<String, Object> templateModel = new HashMap<>();
+		templateModel.put("recipientName", newLetsConnectUser.getName());
+
+
+		sysIOInfoEmailService.sendEmailWithTemplate(
+				newLetsConnectUser.getEmailId(),                             // recipient
+				"🎉 Thanks for Reaching Out – Let’s Connect!!",                       // subject
+				"lets-connect-email-template.html",                   // Thymeleaf template
+				templateModel                                        // template variables
+		);
+		return modelMapper.map(letsConnectUsers, LetsConnectDTO.class);
 	}
 }
