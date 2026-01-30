@@ -8,6 +8,7 @@ import { GalleryComponent } from './gallery/gallery/gallery.component';
 import { MemoirNoteComponent } from '../memoir-note/memoir-note/memoir-note.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { UserRegistrationComponent } from './user-registration/user-registration/user-registration.component';
+import { ProjectsComponent } from './projects/projects/projects.component';
 
 const routes: Routes = [
   // {
@@ -140,6 +141,10 @@ const routes: Routes = [
             {
           path: 'user-registration',
           component: UserRegistrationComponent
+        },
+          {
+          path: 'projects',
+          component: ProjectsComponent
         },
       
     ]

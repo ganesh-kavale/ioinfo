@@ -1,0 +1,35 @@
+<div class="projects-container">
+
+    <div class="app-title">Enterprise Applications: </div>
+
+  <div class="project-card" *ngFor="let project of projects; let i = index">
+
+    <!-- Header -->
+
+    <div class="project-footer">
+      <span class="project-id">Project ID: {{ project.id }}</span>
+      <span class="project-date"> {{ project.timeline }}</span>
+    </div> 
+    
+    <div class="project-header">
+      <h2 class="project-title">{{ project.projectName }}</h2>
+    </div>
+
+    <!-- Meta Info -->
+    <div class="project-meta">
+      <div><strong>Role:</strong> {{ project.role }}</div>
+      <div><strong>Technologies:</strong> {{ project.technologies }}</div>
+    </div>
+
+    <!-- Responsibilities -->
+    <div class="project-body">
+      <div><strong>Responsibilities: </strong></div> <br>
+
+      <div class="responsibilities" [innerHTML]="project.responsibilities"></div>
+    </div>
+
+
+
+  </div>
+
+</div>

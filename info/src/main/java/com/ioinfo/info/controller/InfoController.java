@@ -1,38 +1,31 @@
 package com.ioinfo.info.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.naming.AuthenticationException;
-
-import com.ioinfo.info.dto.LetsConnectDTO;
-import com.ioinfo.info.entity.*;
-import com.ioinfo.info.repository.BlogRepository;
-import com.ioinfo.info.service.BlogService;
-import jakarta.servlet.http.Part;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.ioinfo.info.configuration.JwtUtil;
+import com.ioinfo.info.dto.LetsConnectDTO;
 import com.ioinfo.info.dto.UserDTO;
+import com.ioinfo.info.entity.*;
 import com.ioinfo.info.repository.InfoRepository;
 import com.ioinfo.info.repository.LoginRepository;
 import com.ioinfo.info.response.AddressResponse;
 import com.ioinfo.info.response.EmployeeResponse;
+import com.ioinfo.info.service.BlogService;
 import com.ioinfo.info.service.DataService;
 import com.ioinfo.info.service.InfoService;
+import jakarta.servlet.http.Part;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.naming.AuthenticationException;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 //To add new API add it in the Security Config, Otherwise you will get an 403 http error in api.
 @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 @RestController

@@ -50,7 +50,8 @@ public class SecurityConfig {
                         "/auth/login",
                         "/user-registration",
                         "admin-personal-blogs",
-                        "/lets-connect"
+                        "/lets-connect",
+                        "/projects"
                 ).permitAll()
                 .anyRequest().authenticated()
                 .and()

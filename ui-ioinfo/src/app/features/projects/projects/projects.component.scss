@@ -1,0 +1,106 @@
+.projects-container {
+    display: flex;
+    // justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 5%;
+    padding: 20px;
+}
+
+/* Card */
+.project-card {
+    background: #ffffff;
+    width: 100%;              /* full width */
+    max-width: 100%;          /* no side-by-side */
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+   
+    border-left: 6px solid #0080ff;
+}
+
+
+.project-card:hover {
+  
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Header */
+.project-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 15px;
+}
+
+.project-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.4;
+}
+
+.project-timeline {
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* Meta */
+.project-meta {
+    font-size: 14px;
+    color: #334155;
+    margin-bottom: 14px;
+    line-height: 1.6;
+}
+
+.project-meta strong {
+    color: #0f172a;
+}
+
+/* Body */
+.project-body h4 {
+    font-size: 15px;
+    margin-bottom: 6px;
+    color: #0f172a;
+}
+
+.responsibilities {
+    font-size: 14px;
+    color: #334155;
+}
+
+.responsibilities ul {
+    padding-left: 18px;
+    margin: 6px 0 0 0;
+}
+
+.responsibilities li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+/* Footer */
+.project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 10px;
+    border-bottom: 1px solid #939393;
+    font-size: 16px;
+    color: #64748b;
+}
+
+.project-id {
+    font-weight: 600;
+}
+
+.app-title{
+    font-size: 22px;
+    font-weight: bold;
+}

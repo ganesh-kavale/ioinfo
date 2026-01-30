@@ -10,13 +10,10 @@ import { GalleryModule } from './gallery/gallery.module';
 import { MaterialsModule } from '../materials/materials.module';
 import { CommonsblogModule } from './commonsblog/commonsblog.module';
 import { UserRegistrationModule } from './user-registration/user-registration.module';
-
-
-
+import { ProjectsModule } from './projects/projects.module';
 
 @NgModule({
-  declarations: [
-    
+  declarations: [    
           
   ],
   imports: [
@@ -30,7 +27,8 @@ import { UserRegistrationModule } from './user-registration/user-registration.mo
     GalleryModule,
     MaterialsModule,
     CommonsblogModule,
-    UserRegistrationModule
+    UserRegistrationModule,
+    ProjectsModule
   ]
 })
 export class ContainersModule { }
