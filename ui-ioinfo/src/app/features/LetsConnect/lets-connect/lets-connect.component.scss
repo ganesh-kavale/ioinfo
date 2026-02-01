@@ -1,0 +1,73 @@
+
+
+/* ===============================
+   Contact Form
+================================ */
+.connect-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+#contactUsForm {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 8px;
+    border-collapse: separate;
+    border-spacing: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#form-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #003366;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+#contactUsForm label {
+    font-weight: bold;
+    width: 180px;
+    display: inline-block;
+    padding-top: 10px;
+}
+
+#contactUsForm input,
+#contactUsForm textarea {
+    width: 100%;
+    max-width: 360px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#contactUsForm textarea {
+    resize: vertical;
+}
+
+#contactUsForm button {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#contactUsForm button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#contactUsForm button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+

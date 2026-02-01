@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { environment } from '../../../../environments/environment';
 import { MatMenuModule } from '@angular/material/menu';
 import { NavigationNodesService } from '../../../../services/navigation-nodes.service';
+import { LetsConnectComponent } from '../../LetsConnect/lets-connect/lets-connect.component';
 
 
 interface Food {
@@ -35,7 +36,7 @@ export class HeaderComponent  implements OnInit {
   displayDropdown = false;
 
 
-  constructor(private navigationNodesService: NavigationNodesService, private cd:ChangeDetectorRef){}
+  constructor(private navigationNodesService: NavigationNodesService, private cd:ChangeDetectorRef, private dialog: MatDialog){}
   ngOnInit(): void {
 
     this.navigationNodesService.getNavigationNodes().subscribe(res=>{
@@ -64,4 +65,19 @@ export class HeaderComponent  implements OnInit {
     this.isMenuOpen = !this.isMenuOpen;
   }
  
+  
+//Lets Connect Dialog
+
+  getInTouchLetsConnect() {
+    const dialogRef = this.dialog.open(LetsConnectComponent, {
+      // data: {
+      //   codeCategory: "addCode"
+      // }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+      this.cd.detectChanges();
+    });
+
+  }
 }

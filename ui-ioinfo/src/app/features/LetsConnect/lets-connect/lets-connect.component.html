@@ -1,0 +1,101 @@
+
+
+  <div class="connect-form">
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)">
+      <table id="contactUsForm">
+        <tbody>
+          <tr>
+            <td colspan="2">
+              <h1 id="form-title">Let's Connect...!</h1>
+            </td>
+          </tr>
+
+          <!-- Name -->
+          <tr>
+            <td><label for="name">Name:<span>*</span></label></td>
+            <td>
+              <input type="name" id="name" formControlName="name" placeholder="Enter your name" />
+              <div class="error" *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid"
+                [ngStyle]="{'color':'red'}">
+                <small *ngIf="contactForm.get('name')?.errors?.['required']">Name is required.</small>
+                <small *ngIf="contactForm.get('name')?.errors?.['maxlength']">Max 255 characters allowed.</small>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Email -->
+          <tr>
+            <td><label for="email">Email Address:<span>*</span></label></td>
+            <td>
+              <input type="email" id="email" formControlName="emailId" placeholder="Enter your email Id" />
+              <div class="error" *ngIf="contactForm.get('emailId')?.touched && contactForm.get('emailId')?.invalid"
+                [ngStyle]="{'color':'red'}">
+                <small *ngIf="contactForm.get('emailId')?.errors?.['required']">Email is required.</small>
+                <small *ngIf="contactForm.get('emailId')?.errors?.['maxlength']">Max 50 characters allowed.</small>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Mobile -->
+          <tr>
+            <td><label for="mobile">Mobile Number:</label></td>
+            <td>
+              <input type="tel" id="mobile" formControlName="mobileNo" placeholder="Enter your mobile no." />
+              <div class="error" *ngIf="contactForm.get('mobileNo')?.touched && contactForm.get('mobileNo')?.invalid"
+                [ngStyle]="{'color':'red'}">
+                <small *ngIf="contactForm.get('mobileNo')?.errors?.['required']">Mobile number is required.</small>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Subject -->
+          <tr>
+            <td><label for="subject">Subject:<span>*</span></label></td>
+            <td>
+              <input type="text" id="subject" formControlName="subject" placeholder="Enter subject" />
+              <div class="error" *ngIf="contactForm.get('subject')?.touched && contactForm.get('subject')?.invalid"
+                [ngStyle]="{'color':'red'}">
+                <small *ngIf="contactForm.get('subject')?.errors?.['required']">Subject is required.</small>
+                <small *ngIf="contactForm.get('subject')?.errors?.['maxlength']">Max 255 characters allowed.</small>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td><label for="body">Message:<span>*</span></label></td>
+            <td>
+              <textarea id="body" formControlName="body" rows="4" placeholder="Enter your message"></textarea>
+              <div class="error" *ngIf="contactForm.get('body')?.touched && contactForm.get('body')?.invalid"
+                [ngStyle]="{'color':'red'}">
+                <small *ngIf="contactForm.get('body')?.errors?.['required']">Message is required.</small>
+              </div>
+            </td>
+          </tr>
+
+          <!-- File Upload -->
+          <tr>
+            <td><label for="file">Upload File:<span>*</span></label></td>
+            <td>
+              <input type="file" formControlName="file" rows="4" (change)="onFileSelected($event)" />
+
+              <div class="error" *ngIf="contactForm.get('file')?.touched && contactForm.get('file')?.invalid"
+                [ngStyle]="{'color':'red'}">
+                <small *ngIf="contactForm.get('file')?.errors?.['required']">Please upload file!</small>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Submit Button -->
+          <tr>
+            <td></td>
+            <td>
+              <button type="submit" [disabled]="!contactForm.valid">Let’s Connect</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+
+  </div>

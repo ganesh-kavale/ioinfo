@@ -11,6 +11,7 @@ import { MaterialsModule } from '../materials/materials.module';
 import { CommonsblogModule } from './commonsblog/commonsblog.module';
 import { UserRegistrationModule } from './user-registration/user-registration.module';
 import { ProjectsModule } from './projects/projects.module';
+import { LetsConnectModule } from './LetsConnect/lets-connect.module';
 
 @NgModule({
   declarations: [    
@@ -28,7 +29,8 @@ import { ProjectsModule } from './projects/projects.module';
     MaterialsModule,
     CommonsblogModule,
     UserRegistrationModule,
-    ProjectsModule
+    ProjectsModule,
+    LetsConnectModule
   ]
 })
 export class ContainersModule { }

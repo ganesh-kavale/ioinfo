@@ -1,274 +1,82 @@
 <div class="homepage-content-container">
-  <!-- <div class="home-container">
-    <img src="../../../assets/images/homepage-image.jpg" alt="Homepage">
-</div> -->
+
+
 
   <div id="carousel-homepage" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
+    <section class="profile">
+      <div class="container profile-content">
 
-      <div class="carousel-item" *ngFor="let image of imageUrls; let i = index" [class.active]="i === 0">
-        <img [src]="image" class="d-block w-100" alt="Slide {{ i + 1 }}" />
+        <div class="profile-text">
+          <h2>Hello, I'm</h2>
+          <h1><span class="highlight">Ganesh Kavale</span></h1>
+
+          <h3 class="profile-title">
+            Software Developer
+          </h3>
+
+          <p>
+            Results driven Software Developer with 3+ years of experience in Product Development, and building
+            enterprise B2B and B2C platforms. I specialize in Java, Spring Boot, Microservices, Spring MVC, Hibernate,
+            SAP Commerce Cloud (Hybris), Angular, and AWS, with a strong focus on scalable system design, secure API
+            development, and high-performance digital solutions. My work spans healthcare, enterprise commerce, and
+            product platforms across regions including USA, Germany, Singapore, and Malaysia.
+          </p>
+          <p>I combine strong backend engineering with full-stack capabilities to deliver reliable, business-driven
+            platforms. With experience in end-to-end product development, system architecture, and enterprise
+            integrations, I focus on building clean, maintainable systems that create real business impact and long-term
+            value.
+          </p>
+
+        </div>
+
+        <div class="profile-image">
+          <img src="../../../assets/images/Ganesh_Profile.png" alt="Ganesh Kavale">
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+  <div class="enterprise-projects">
+    <div class="projects-wrapper">
+
+      <!-- Left Image -->
+      <div class="projects-image">
+        <img src="../../../assets/images/Projects.jpg" alt="Ganesh Kavale">
       </div>
 
-    </div>
+      <!-- Right Content -->
+      <div class="project-list">
 
-    <!-- Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carousel-homepage" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carousel-homepage" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
+        <!-- Enterprise Projects -->
+        <div class="app-title">Enterprise Projects</div>
+        <div class="project-item" *ngFor="let projectName of enterpriseProjects; let j = index">
+          <a routerLink="/portfolio">{{ projectName }}</a>
+        </div>
+
+        <!-- Personal Projects -->
+        <div class="app-title personal-title">Personal Projects</div>
+        <div class="project-item" *ngFor="let personalProject of personalProjects">
+          <a routerLink="/portfolio">{{ personalProject }}</a>
+        </div>
+
+      </div>
+    </div>
   </div>
 
-<section id="services">
-  <h2 id="service-title">Transforming ideas into intelligent solutions.</h2>
+  <div class="gallery-section">
+  <div class="gallery-title">Gallery</div>
 
-  <!-- <marquee behavior="" direction="">I am a Developer Professional with Expertise and Experienced in below Technologies</marquee> -->
-  <!-- <p>Transforming ideas into intelligent solutions.</p> -->
-
-  <div class="services-container">
-    <!-- Service 1: Generative AI -->
-    <div class="service-card">
-      <img src="https://via.placeholder.com/80?text=AI" alt="Generative AI">
-      <h3>Generative AI</h3>
-      <p>Create intelligent AI models for content generation, automation, and more.</p>
-    </div>
-
-    <!-- Service 2: Microservices -->
-    <div class="service-card">
-      <img src="https://via.placeholder.com/80?text=Microservices" alt="Microservices">
-      <h3>Microservices</h3>
-      <p>Design and develop scalable, modular, and maintainable microservice architectures.</p>
-    </div>
-
-    <!-- Service 3: Ecommerce -->
-    <div class="service-card">
-      <img src="https://via.placeholder.com/80?text=Ecommerce" alt="Ecommerce">
-      <h3>Ecommerce</h3>
-      <p>Build feature-rich online stores to drive sales and customer engagement.</p>
-    </div>
-
-    <!-- Service 4: Cloud Solutions -->
-    <div class="service-card">
-      <img src="https://via.placeholder.com/80?text=Cloud" alt="Cloud Solutions">
-      <h3>Cloud Solutions</h3>
-      <p>Deploy scalable cloud infrastructure to enhance reliability and performance.</p>
-    </div>
-
-    <!-- Service 5: Web Development -->
-    <div class="service-card">
-      <img src="https://via.placeholder.com/80?text=Web" alt="Web Development">
-      <h3>Web Development</h3>
-      <p>Create responsive, modern websites tailored to your business needs.</p>
-    </div>
-
-    <!-- Service 6: Cybersecurity -->
-    <div class="service-card">
-  <img src="https://via.placeholder.com/80?text=CFD" alt="Computational Fluid Dynamics">
-  <h3>Computational Fluid Dynamics Solutions</h3>
-  <p>Optimize and simulate fluid flow and thermal systems with advanced CFD analysis tools.</p>
+  <div class="marquee-container">
+    <div class="marquee-track">
+  <div
+      class="marquee-item"
+      *ngFor="let item of imageUrls"
+    >
+      <img [src]="item" [alt]="item">
+      <!-- <div class="title">{{ item }}</div> -->
+    </div>    </div>
+  </div>
 </div>
 
-  </div>
-</section>
-
-
-  <div class="homepage-profile-container">
-    <div class="row">
-      <div class="col">
-        <div>
-          <a href="#" aria-label="Play video">
-            <!-- <img class="profile-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQayhvZsKTn2toeX4ORCt4_df2SsHOLqCDoFw&s" alt="SAP S/4HANA Cloud Public Edition 2408"> -->
-            <!-- <img class="profile-img" src="../../../assets/images/Developer-Photo.jpeg" alt="SAP S/4HANA Cloud Public Edition 2408"> -->
-            <img class="profile-img" src="../../../assets/images/homepage-image2.jpg" alt="Homepage">
-
-          </a>
-        </div>
-      </div>
-      <div class="col text-section">
-
-
-
-        <!-- <div class="tech-stack-section">
-  <div class="tech-tags">
-    <span class="badge bg-primary">Core Java</span>
-    <span class="badge bg-success">Cloud Solutions</span>
-    <span class="badge bg-info text-dark">SAP Commerce Cloud</span>
-    <span class="badge bg-warning text-dark">SAP Hybris Framework</span>
-    <span class="badge bg-danger">Spring MVC</span>
-    <span class="badge bg-secondary">SpringBoot</span>
-    <span class="badge bg-dark">Microservices</span>
-    <span class="badge bg-primary">Azure Cloud</span>
-    <span class="badge bg-success">Docker</span>
-    <span class="badge bg-info text-dark">Kubernetes</span>
-    <span class="badge bg-warning text-dark">Node.js</span>
-    <span class="badge bg-danger">Spartacus</span>
-    <span class="badge bg-secondary">AngularJS</span>
-    <span class="badge bg-dark">EJS</span>
-    <span class="badge bg-primary">TypeScript</span>
-    <span class="badge bg-success">MySQL</span>
-    <span class="badge bg-info text-dark">MSSQL</span>
-    <span class="badge bg-warning text-dark">PostgreSQL</span>
-  </div>
-</div> -->
-
-        <section class="tech-stack-section container py-5">
-          <!-- <h2 class="text-center mb-4">Our Technology Expertise</h2> -->
-          <div class="text-center mb-4 developer-text">TECHNOLOGY EXPERTISE</div>
-
-          <div class="row justify-content-center">
-            <div class="col-md-10">
-              <ul class="list-group list-group-flush shadow-sm">
-                <li class="list-group-item">Core Java, Java EE</li>
-                <li class="list-group-item">Spring MVC, Spring Boot, Microservices</li>
-                <li class="list-group-item">Docker, Kubernetes</li>
-                <li class="list-group-item">SAP Commerce Cloud / SAP Hybris Framework, Azure Cloud, Oracle Cloud</li>
-                <li class="list-group-item">Node.js, AngularJS, Spartacus, EJS, TypeScript</li>
-                <li class="list-group-item">Database: MySQL, MSSQL, HSQL, PostgreSQL</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="connect-form">
-
-    <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)">
-      <table id="contactUsForm">
-        <tbody>
-          <tr>
-            <td colspan="2">
-              <h1 id="form-title">Let's Connect...!</h1>
-            </td>
-          </tr>
-
-          <!-- Name -->
-          <tr>
-            <td><label for="name">Name:<span>*</span></label></td>
-            <td>
-              <input type="name" id="name" formControlName="name" placeholder="Enter your name" />
-              <div class="error" *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid"
-                [ngStyle]="{'color':'red'}">
-                <small *ngIf="contactForm.get('name')?.errors?.['required']">Name is required.</small>
-                <small *ngIf="contactForm.get('name')?.errors?.['maxlength']">Max 255 characters allowed.</small>
-              </div>
-            </td>
-          </tr> 
-          
-          <!-- Email -->
-          <tr>
-            <td><label for="email">Email Address:<span>*</span></label></td>
-            <td>
-              <input type="email" id="email" formControlName="emailId" placeholder="Enter your email Id" />
-              <div class="error" *ngIf="contactForm.get('emailId')?.touched && contactForm.get('emailId')?.invalid"
-                [ngStyle]="{'color':'red'}">
-                <small *ngIf="contactForm.get('emailId')?.errors?.['required']">Email is required.</small>
-                <small *ngIf="contactForm.get('emailId')?.errors?.['maxlength']">Max 50 characters allowed.</small>
-              </div>
-            </td>
-          </tr>
-
-          <!-- Mobile -->
-          <tr>
-            <td><label for="mobile">Mobile Number:</label></td>
-            <td>
-              <input type="tel" id="mobile" formControlName="mobileNo" placeholder="Enter your mobile no." />
-              <div class="error" *ngIf="contactForm.get('mobileNo')?.touched && contactForm.get('mobileNo')?.invalid"
-                [ngStyle]="{'color':'red'}">
-                <small *ngIf="contactForm.get('mobileNo')?.errors?.['required']">Mobile number is required.</small>
-              </div>
-            </td>
-          </tr>
-
-          <!-- Subject -->
-          <tr>
-            <td><label for="subject">Subject:<span>*</span></label></td>
-            <td>
-              <input type="text" id="subject" formControlName="subject" placeholder="Enter subject" />
-              <div class="error" *ngIf="contactForm.get('subject')?.touched && contactForm.get('subject')?.invalid"
-                [ngStyle]="{'color':'red'}">
-                <small *ngIf="contactForm.get('subject')?.errors?.['required']">Subject is required.</small>
-                <small *ngIf="contactForm.get('subject')?.errors?.['maxlength']">Max 255 characters allowed.</small>
-              </div>
-            </td>
-          </tr>
-
-          <!-- Body -->
-          <tr>
-            <td><label for="body">Message:<span>*</span></label></td>
-            <td>
-              <textarea id="body" formControlName="body" rows="4" placeholder="Enter your message"></textarea>
-              <div class="error" *ngIf="contactForm.get('body')?.touched && contactForm.get('body')?.invalid"
-                [ngStyle]="{'color':'red'}">
-                <small *ngIf="contactForm.get('body')?.errors?.['required']">Message is required.</small>
-              </div>
-            </td>
-          </tr>
-
-                 <!-- File Upload -->
-          <tr>
-            <td><label for="file">Upload File:<span>*</span></label></td>
-            <td>
-               <input type="file" formControlName="file" rows="4"  (change)="onFileSelected($event)"/>
-             
-              <div class="error" *ngIf="contactForm.get('file')?.touched && contactForm.get('file')?.invalid"
-                [ngStyle]="{'color':'red'}">
-                <small *ngIf="contactForm.get('file')?.errors?.['required']">Please upload file!</small>
-              </div>
-            </td>
-          </tr>
-
-          <!-- Submit Button -->
-          <tr>
-            <td></td>
-            <td>
-              <button type="submit" [disabled]="!contactForm.valid">Let’s Connect</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </form>
-
-  </div>
-  <!-- 
-<div class="vertical-heading">
-  <div>{{ letter }}</div>
-</div> -->
-
-<div class="image-carousel-wrapper">
-  <button class="carousel-control prev" (click)="scrollLeft()">
-    <span class="carousel-control-icon">‹</span>
-  </button>
-
-  <div class="scroll-wrapper" #scrollContainer>
-    <div class="image-cards-container">
-      <div class="image-card" *ngFor="let rowData of imageRows; let j = index">
-        <div class="image-preview">
-          <img [src]="rowData.imagePath" alt="photo" />
-        </div>
-        <div class="card-content">
-          <div class="project-name">{{ rowData.projectName }}</div>
-          <div class="project-description">{{ rowData.description }}</div>
-          <div class="project-techstack">{{ rowData.techStack }}</div>
-          <div class="more-link">
-            <a href="/portfolio">More to know →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <button class="carousel-control next" (click)="scrollRight()">
-    <span class="carousel-control-icon">›</span>
-  </button>
 </div>
-
-
-
-
-  </div>

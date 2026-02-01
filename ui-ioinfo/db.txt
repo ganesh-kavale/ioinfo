@@ -127,3 +127,7 @@ CREATE TABLE blog_posts (
     supports INT DEFAULT 0,                    -- Count of supports
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+
+Alter table ioinfo.projects add projectType boolean;

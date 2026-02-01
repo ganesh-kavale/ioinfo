@@ -33,6 +33,11 @@ public class Projects {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    @Column(name = "project_type", nullable = false)
+    private Boolean projectType;
+
+
+
     // ================================
     // Lifecycle Callbacks
     // ================================
@@ -50,12 +55,13 @@ public class Projects {
      public Projects() {}
 
     public Projects(String projectName, String role, String timeline,
-                         String technologies, String responsibilities) {
+                         String technologies, String responsibilities, Boolean projectType) {
         this.projectName = projectName;
         this.role = role;
         this.timeline = timeline;
         this.technologies = technologies;
         this.responsibilities = responsibilities;
+        this.projectType=projectType;
     }
 
     public Long getId() {
@@ -108,5 +114,25 @@ public class Projects {
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Boolean getProjectType() {
+        return projectType;
+    }
+
+    public void setProjectType(Boolean projectType) {
+        this.projectType = projectType;
     }
 }

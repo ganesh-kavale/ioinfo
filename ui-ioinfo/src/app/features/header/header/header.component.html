@@ -5,14 +5,17 @@
       <!-- Left: Logo & Brand -->
       <div class="logo-contact-wrapper">
         <div class="logo-section">
-          <img src="assets/images/ioinfo.svg" alt="Logo" class="logo" />
-          <img src="assets/images/ioinfosystemai.svg" alt="Logo" class="logoname" />    
+          <!-- <img src="assets/images/ioinfo.svg" alt="Logo" class="logo" /> -->
+          <img src="assets/images/porfolio.svg" alt="Logo" class="logoname" />
         </div>
 
         <!-- Contact Info -->
         <div class="contact-info">
           <span class="contact-item">📞 +91-9067909181</span>
-          <span class="contact-item">✉️ krishna.iosys.ai&#64;gmail.com</span>
+          <span class="contact-item">✉️ ganeshkavale27&#64;gmail.com</span>
+          <button class="contact-btn" (click)="getInTouchLetsConnect()">
+            Let's Connect
+          </button>
         </div>
       </div>
 
@@ -26,7 +29,7 @@
     <nav class="nav-links" [class.show]="isMenuOpen">
       <ng-container *ngFor="let node of navigationNodes; let i = index">
         <a class="nav-link active" [href]="node.url">{{ node.name }}</a>
-        <span *ngIf="i < navigationNodes.length - 1" class="separator">|</span>
+        <!-- <span *ngIf="i < navigationNodes.length - 1" class="separator">|</span> -->
       </ng-container>
     </nav>
   </div>

@@ -3,17 +3,18 @@
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #1f1f1f;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(65, 38, 38);
   padding: 10px 20px;
 }
 
 .container {
-  border-bottom: 1px solid #fff;
-  background-color: #222;
+  border-bottom: 1px solid #000000;
+  // background-color: #938dc8;
   transition: 0.4s ease-in-out;
   transition-property: transform, height;
   position: relative;
+  
 }
 
 /* Section Layout */
@@ -60,10 +61,12 @@
   font-size: 14px;
   color: white;
   align-items: center;
+  margin-right: 7rem;
 }
 
 .contact-item {
   white-space: nowrap;
+  color: black;
 }
 
 /* Hamburger Icon */
@@ -80,7 +83,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: #1f1f1f;
+  // background-color: #baca8f;
   padding: 10px 0;
 }
 
@@ -90,14 +93,14 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 50px;
   font-weight: bold;
   width: 100%;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: white;
+  color: rgb(61, 0, 0);
   font-size: 14px;
   white-space: nowrap;
 }
@@ -112,6 +115,7 @@
 @media (max-width: 992px) {
   .hamburger {
     display: block;
+    color: red;
   }
 
   .nav-links {
@@ -145,10 +149,27 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
+    
   }
 }
 
-.logoname{
-  height: 50px;
-    width: 10rem;
+// .logoname{
+//   height: 50px;
+//     width: 10rem;
+// }
+
+.contact-btn {
+  padding: 8px 18px;
+  background: #8a0a0a; /* matches your theme */
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: #5e0606;
+  transform: translateY(-2px);
 }
